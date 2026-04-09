@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Us — Beer Money</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --cream:#F5F0E8; --red:#C0392B; --gold:#D4900A; --black:#1C1A14; --smoke:#8a7f6e; }
+  html, body { background: var(--cream); color: var(--black); font-family: 'Barlow Condensed', sans-serif; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 48px 0; background: transparent; transition: background 0.25s ease; overflow: visible; }
+  nav.scrolled { background: linear-gradient(to bottom, var(--cream) 78%, rgba(245,240,232,0) 100%); }
+  nav > a { display: block; margin-top: -25px; margin-bottom: -36px; position: relative; z-index: 1; }
+  .nav-logo { height: 105px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: absolute; left: 56%; transform: translateX(-50%); margin-top: -11px; }
+  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+
+  /* PAGE HEADER */
+  .page-header { padding: 120px 48px 40px; border-bottom: 1px solid rgba(28,26,20,0.12); }
+  .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+  .page-title { font-size: clamp(64px, 10vw, 120px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; color: var(--black); }
+  .page-title em { font-style: normal; color: var(--gold); }
+  .page-sub { margin-top: 28px; font-size: 18px; font-weight: 300; letter-spacing: 1px; color: var(--smoke); max-width: 560px; line-height: 1.6; }
+
+  /* TEAM GRID */
+  .team { padding: 40px 48px 100px; }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; }
+
+  .member { background: var(--cream); border: 1px solid rgba(28,26,20,0.12); padding: 48px 40px 52px; position: relative; overflow: hidden; transition: background 0.3s; }
+  .member::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .member:hover { background: var(--black); }
+  .member:hover::before { transform: scaleX(1); }
+  .member:hover .member-name,
+  .member:hover .member-bio { color: var(--cream); }
+
+  .member-inner { display: flex; gap: 32px; align-items: flex-start; }
+  .member-headshot { flex: 0 0 140px; width: 140px; aspect-ratio: 2/3; background: rgba(28,26,20,0.06); border: 1px dashed rgba(28,26,20,0.15); }
+  .member:hover .member-headshot { background: rgba(245,240,232,0.06); border-color: rgba(245,240,232,0.15); }
+  .member-content { flex: 1; }
+
+  .member-name { font-size: 48px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); margin-bottom: 6px; line-height: 1; transition: color 0.3s; }
+  .member-meta { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; transition: color 0.3s; }
+  .member:hover .member-meta { color: rgba(212,144,10,0.8); }
+  .member-bio { font-size: 15px; font-weight: 300; letter-spacing: 0.3px; color: var(--smoke); line-height: 1.7; transition: color 0.3s; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { height: 36px; opacity: 0.7; }
+  .footer-copy { font-size: 11px; font-weight: 400; letter-spacing: 2px; color: rgba(245,240,232,0.35); text-transform: uppercase; }
+  .footer-contact a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+  .footer-contact a:hover { color: var(--cream); }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 24px; }
+    .page-header { padding: 100px 24px 48px; }
+    .team { padding: 48px 24px 64px; }
+    .nav-links { gap: 20px; }
+    .member-inner { flex-direction: column; }
+    .member-headshot { width: 100%; flex: none; aspect-ratio: 3/2; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><img class="nav-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="us.html" class="active">Us</a></li>
+    <li><a href="them.html">Them</a></li>
+    <li><a href="pudding.html">Pudding</a></li>
+    <li><a href="summon.html">Summon</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <h1 class="page-title">We are<br><em>us.</em> <span style="font-size:0.22em; color:var(--smoke); letter-spacing:1px; font-weight:300; text-transform:none; font-family:'Barlow Condensed', sans-serif;">(duh)</span></h1>
+</header>
+
+<section class="team">
+  <div class="team-grid">
+
+    <div class="member">
+      <div class="member-inner">
+        <div class="member-headshot"></div>
+        <div class="member-content">
+          <h2 class="member-name">Matt Ott</h2>
+          <p class="member-meta">Writer &bull; Director &bull; Editor &nbsp;&#9670;&nbsp; NYC</p>
+          <p class="member-bio">Matt produces live stand-up comedy and creates branded content campaigns for major clients. He built Beer Money to put real comedians in front of brands that want funny but don&rsquo;t know how to get there.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="member-inner">
+        <div class="member-headshot"></div>
+        <div class="member-content">
+          <h2 class="member-name">Kiel Kennedy</h2>
+          <p class="member-meta">Actor &bull; Writer &bull; Director &nbsp;&#9670;&nbsp; LA</p>
+          <p class="member-bio">Kiel came up through The Groundlings and co-created <em>The Chit Show</em>, which grew to over a million followers in six months. He brings character, timing, and the kind of instincts you only get from years on stage.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="member">
+      <div class="member-inner">
+        <div class="member-headshot"></div>
+        <div class="member-content">
+          <h2 class="member-name">Gerry</h2>
+          <p class="member-meta">Account Management &bull; Fun Police &nbsp;&#9670;&nbsp; NYC</p>
+          <p class="member-bio">Every comedy troupe needs the grounded character who tries to rein in the clowns. Luckily Gerry&rsquo;s still slightly askew. His years of agency experience keeps us (mostly) in check.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <img class="footer-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money">
+  <p class="footer-copy">&copy; 2025 Beer Money</p>
+  <div class="footer-contact"><a href="mailto:matt@summonbeermoney.com">matt@summonbeermoney.com</a></div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
+</body>
+</html>

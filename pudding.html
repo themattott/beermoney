@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pudding — Beer Money</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --cream:#F5F0E8; --red:#C0392B; --gold:#D4900A; --black:#1C1A14; --smoke:#8a7f6e; }
+  html, body { background: var(--cream); color: var(--black); font-family: 'Barlow Condensed', sans-serif; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 48px 0; background: transparent; transition: background 0.25s ease; overflow: visible; }
+  nav.scrolled { background: linear-gradient(to bottom, var(--cream) 78%, rgba(245,240,232,0) 100%); }
+  nav > a { display: block; margin-top: -25px; margin-bottom: -36px; position: relative; z-index: 1; }
+  .nav-logo { height: 105px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: absolute; left: 56%; transform: translateX(-50%); margin-top: -11px; }
+  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+
+  .page-header { padding: 120px 48px 40px; border-bottom: 1px solid rgba(28,26,20,0.12); }
+  .page-title-aside { display: block; font-size: 0.22em; font-weight: 300; letter-spacing: 1px; text-transform: none; color: var(--smoke); font-family: 'Barlow Condensed', sans-serif; margin-top: 4px; }
+  .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+  .page-title { font-size: clamp(64px, 10vw, 120px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
+  .page-title em { font-style: normal; color: var(--gold); }
+  .page-sub { margin-top: 28px; font-size: 18px; font-weight: 300; letter-spacing: 1px; color: var(--smoke); max-width: 560px; line-height: 1.6; }
+
+  /* WORK GRID */
+  .work { padding: 40px 48px 100px; }
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; }
+
+  .work-item { position: relative; background: var(--black); overflow: hidden; aspect-ratio: 16/9; cursor: pointer; }
+  .work-item-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--black) 0%, #2a2418 100%); }
+  .work-item-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(212,144,10,0.12) 1px, transparent 1px); background-size: 24px 24px; }
+
+  /* featured item spans 2 cols */
+  .work-item.featured { grid-column: span 2; aspect-ratio: 21/9; }
+
+  .work-item-content { position: absolute; inset: 0; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .work-item-tag { font-size: 9px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .work-item-client { font-size: clamp(22px, 3vw, 36px); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--cream); line-height: 1; margin-bottom: 8px; }
+  .work-item-desc { font-size: 13px; font-weight: 300; letter-spacing: 0.5px; color: rgba(245,240,232,0.55); line-height: 1.5; max-width: 420px; }
+
+  /* overlay on hover */
+  .work-item-overlay { position: absolute; inset: 0; background: var(--red); opacity: 0; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; }
+  .work-item:hover .work-item-overlay { opacity: 0.92; }
+  .work-item-overlay-text { font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--cream); text-align: center; padding: 24px; }
+
+  /* accent line on left edge */
+  .work-item::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--gold); z-index: 2; }
+  .work-item.red-accent::before { background: var(--red); }
+  .work-item.featured::before { width: 4px; }
+
+  /* STAT BAND */
+  .stat-band { background: var(--black); padding: 72px 48px; }
+  .stat-grid { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+  .stat { flex: 1; min-width: 180px; padding: 32px; text-align: center; border-right: 1px solid rgba(245,240,232,0.1); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: clamp(40px, 6vw, 64px); font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,240,232,0.45); }
+
+  /* PLACEHOLDER NOTE */
+  .placeholder-note { background: rgba(212,144,10,0.08); border: 1px dashed var(--gold); margin: 0 48px 48px; padding: 20px 28px; }
+  .placeholder-note p { font-size: 13px; font-weight: 400; letter-spacing: 0.5px; color: var(--gold); line-height: 1.6; }
+  .placeholder-note strong { font-weight: 600; }
+
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { height: 36px; opacity: 0.7; }
+  .footer-copy { font-size: 11px; letter-spacing: 2px; color: rgba(245,240,232,0.35); text-transform: uppercase; }
+  .footer-contact a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .work-item.featured { grid-column: span 1; aspect-ratio: 16/9; }
+    nav { padding: 16px 24px; }
+    .page-header, .work, .stat-band { padding-left: 24px; padding-right: 24px; }
+    .placeholder-note { margin: 0 24px 24px; }
+    .nav-links { gap: 20px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><img class="nav-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="us.html">Us</a></li>
+    <li><a href="them.html">Them</a></li>
+    <li><a href="pudding.html" class="active">Pudding</a></li>
+    <li><a href="summon.html">Summon</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <h1 class="page-title">The<br><em>pudding.<span class="page-title-aside">(you know, where the proof is)</span></em></h1>
+  <p class="page-sub">As you&rsquo;re aware, you don&rsquo;t explain a joke.<br>We don&rsquo;t explain the work.</p>
+</header>
+
+<section class="work">
+  <div class="placeholder-note">
+    <p><strong>For you to fill in:</strong> Drop video embeds, links, or screenshots into each card below. Each <code>.work-item</code> can hold a thumbnail image, an iframe, or a link to an external video. The grid is ready to go.</p>
+  </div>
+
+  <div class="work-grid">
+
+    <div class="work-item featured red-accent">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Branded Content &bull; Social Series</p>
+        <p class="work-item-client">The Chit Show</p>
+        <p class="work-item-desc">Co-created by Kiel Kennedy out of The Groundlings. Grew to over a million followers in six months.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Beverage &bull; Campaign</p>
+        <p class="work-item-client">Busch Light</p>
+        <p class="work-item-desc">Comedy-first branded campaign.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">DTC &bull; Branded Video</p>
+        <p class="work-item-client">BarkBox</p>
+        <p class="work-item-desc">Comedy content for one of the fastest-growing pet brands.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Entertainment &bull; Collab</p>
+        <p class="work-item-client">Star Wars / NASCAR</p>
+        <p class="work-item-desc">When two massive IPs collide — comedy is the connector.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Gaming &bull; Branded Content</p>
+        <p class="work-item-client">Diablo 4 / Activision</p>
+        <p class="work-item-desc">Comedy content for one of gaming&rsquo;s biggest launches.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Apparel &bull; Campaign</p>
+        <p class="work-item-client">Columbia Sportswear</p>
+        <p class="work-item-desc">Outdoor gear meets stand-up energy.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Media &bull; Network</p>
+        <p class="work-item-client">Comedy Central</p>
+        <p class="work-item-desc">Making comedy content for the comedy channel.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Food &bull; DTC</p>
+        <p class="work-item-client">Magic Spoon</p>
+        <p class="work-item-desc">Cereal for adults. Comedy that earns the scroll stop.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Spirits &bull; Campaign</p>
+        <p class="work-item-client">Lyre&rsquo;s Non-Alcoholic</p>
+        <p class="work-item-desc">All the taste, all the laughs, none of the hangover.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-item-bg"></div>
+      <div class="work-item-pattern"></div>
+      <div class="work-item-content">
+        <p class="work-item-tag">Government &bull; PSA</p>
+        <p class="work-item-client">New York State</p>
+        <p class="work-item-desc">Comedy in service of the public. Turns out it works here too.</p>
+      </div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="stat-band">
+  <div class="stat-grid">
+    <div class="stat">
+      <p class="stat-num">9+</p>
+      <p class="stat-label">Major Brands</p>
+    </div>
+    <div class="stat">
+      <p class="stat-num">1M+</p>
+      <p class="stat-label">Followers in 6 Months</p>
+    </div>
+    <div class="stat">
+      <p class="stat-num">2</p>
+      <p class="stat-label">Coasts Covered</p>
+    </div>
+    <div class="stat">
+      <p class="stat-num">0</p>
+      <p class="stat-label">Unfunny Campaigns</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <img class="footer-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money">
+  <p class="footer-copy">&copy; 2025 Beer Money</p>
+  <div class="footer-contact"><a href="mailto:matt@summonbeermoney.com">matt@summonbeermoney.com</a></div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
+</body>
+</html>
