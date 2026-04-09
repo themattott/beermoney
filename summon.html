@@ -12,10 +12,10 @@
 
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 48px 0; background: transparent; transition: background 0.25s ease; overflow: visible; }
   nav.scrolled { background: linear-gradient(to bottom, var(--black) 78%, rgba(28,26,20,0) 100%); }
-  nav > a { display: block; margin-top: -25px; margin-bottom: -36px; position: relative; z-index: 1; }
-  .nav-logo { height: 105px; width: auto; display: block; }
-  .nav-links { display: flex; gap: 40px; list-style: none; position: absolute; left: 56%; transform: translateX(-50%); margin-top: -11px; }
-  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,240,232,0.6); text-decoration: none; transition: color 0.2s; }
+  nav > a { display: block; margin-top: -8px; margin-bottom: -44px; position: relative; z-index: 1; }
+  .nav-logo { height: 130px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 40px; list-style: none; position: absolute; left: 65%; transform: translateX(-50%); margin-top: 22px; }
+  .nav-links a { font-size: 18px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.6); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 
   /* MAIN LAYOUT — two columns */
@@ -24,7 +24,7 @@
   /* LEFT — copy */
   .summon-left { padding: 140px 64px 80px 48px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(245,240,232,0.08); }
   .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-  .page-title { font-size: clamp(56px, 7vw, 100px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; color: var(--cream); margin-bottom: 36px; }
+  .page-title { font-size: clamp(64px, 9vw, 120px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; color: var(--cream); margin-bottom: 36px; }
   .page-title em { font-style: normal; color: var(--red); }
   .page-sub { font-size: 17px; font-weight: 300; letter-spacing: 0.5px; color: rgba(245,240,232,0.6); line-height: 1.7; max-width: 420px; margin-bottom: 56px; }
 
@@ -111,6 +111,21 @@
     nav { padding: 16px 24px; }
     .nav-links { gap: 20px; }
     footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    nav, nav.scrolled { padding: 8px 12px 8px 16px; background: var(--black); box-shadow: none; }
+    nav > a { margin-top: 0; margin-bottom: 0; }
+    .nav-logo { height: 68px; }
+    .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 8px; margin-top: 0; }
+    .nav-links a { font-size: 15px; letter-spacing: 0.5px; }
+    .summon-left { padding: 100px 20px 36px; }
+    .page-title { font-size: 48px; }
+    .summon-right { padding: 36px 20px 60px; }
+    .form-row { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; }
+    .location { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.1); padding: 16px 0; }
+    .location:last-child { border-bottom: none; padding-left: 0; }
+    footer { padding: 24px 20px; }
   }
 </style>
 </head>
