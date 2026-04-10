@@ -27,51 +27,53 @@
   /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 31px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 16px 48px 0;
-    background: transparent;
-    transition: background 0.25s ease;
+    gap: 40px;
+    padding: 8px 40px 8px 12px;
+    background: var(--cream);
+    border-radius: 999px;
+    box-shadow: 0 4px 24px rgba(28,26,20,0.10), 0 1px 4px rgba(28,26,20,0.06);
+    transition: box-shadow 0.25s ease, background 0.25s ease;
     overflow: visible;
   }
 
-  nav.scrolled { background: linear-gradient(to bottom, var(--cream) 78%, rgba(245,240,232,0) 100%); }
+  nav.scrolled {
+    box-shadow: 0 6px 32px rgba(28,26,20,0.14), 0 2px 6px rgba(28,26,20,0.08);
+  }
 
   .nav-logo {
-    height: 130px;
+    height: 120px;
     width: auto;
     display: block;
-    margin-top: -8px;
-    margin-bottom: -44px;
+    margin: -36px 0 -44px -20px;
     position: relative;
     z-index: 1;
   }
 
   .nav-links {
     display: flex;
-    gap: 40px;
+    gap: 32px;
     list-style: none;
-    position: absolute;
-    left: 56%;
-    transform: translateX(-50%);
-    margin-top: 22px;
+    align-items: center;
   }
 
   .nav-links a {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--black);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s, font-size 0.2s;
   }
 
-  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover { color: var(--gold); font-size: 16.8px; }
 
   /* ── HERO ── */
   .hero {
@@ -96,6 +98,8 @@
     opacity: 0.03;
     pointer-events: none;
   }
+
+  .hero-logo { display: none; }
 
   /* thick rule top */
   .hero-rule-top {
@@ -443,7 +447,7 @@
     gap: 16px;
   }
 
-  .footer-logo { height: 36px; opacity: 0.7; }
+  .footer-logo { height: 90px; opacity: 0.7; }
 
   .footer-copy {
     font-size: 11px;
@@ -490,11 +494,21 @@
     .service-item:nth-last-child(-n+2) { border-bottom: none; }
   }
   @media (max-width: 480px) {
-    nav, nav.scrolled { padding: 8px 12px 8px 16px; background: var(--cream); box-shadow: none; }
-    .nav-logo { height: 68px; margin-top: 0; margin-bottom: 0; }
-    .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 8px; margin-top: 0; }
-    .nav-links a { font-size: 15px; letter-spacing: 0.5px; }
-    .hero { padding: 80px 20px 40px; min-height: auto; }
+    nav, nav.scrolled {
+      top: auto;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 6px 24px 6px 8px;
+      background: var(--cream);
+      border-radius: 999px;
+      box-shadow: 0 4px 24px rgba(28,26,20,0.12), 0 1px 4px rgba(28,26,20,0.06);
+    }
+    .nav-logo { height: 94px; margin: -27px -5px -27px -20px; }
+    .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 12px; margin-top: 0; }
+    .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
+    .hero-logo { display: block; height: 105px; width: auto; margin: -25px auto 0; }
+    .hero { padding: 20px 20px 40px; min-height: auto; }
     .hero-headline { font-size: 52px; }
     .hero-sub { font-size: 48px; }
     .hero-divider { margin: 8px 0; }
@@ -503,7 +517,7 @@
     .clients { padding: 32px 20px; }
     .client-label { font-size: 9px; margin-bottom: 16px; }
     .client-list { font-size: 11px; gap: 6px 20px; }
-    footer { padding: 24px 20px; }
+    footer { padding: 24px 20px 80px; }
   }
 </style>
 </head>
@@ -522,6 +536,7 @@
 
 <!-- HERO -->
 <section class="hero">
+  <img src="cropped-beermoneylogo-1.png" alt="Beer Money" class="hero-logo">
   <div class="hero-rule-top"></div>
   <h1 class="hero-headline">
     You know your<br>

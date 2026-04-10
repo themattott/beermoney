@@ -27,7 +27,7 @@
   /* ── NAV ── */
   nav {
     position: fixed;
-    top: 16px;
+    top: 31px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -47,10 +47,10 @@
   }
 
   .nav-logo {
-    height: 96px;
+    height: 120px;
     width: auto;
     display: block;
-    margin: -24px 0 -32px;
+    margin: -36px 0 -44px -20px;
     position: relative;
     z-index: 1;
   }
@@ -70,10 +70,10 @@
     text-transform: uppercase;
     color: var(--black);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s, font-size 0.2s;
   }
 
-  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover { color: var(--gold); font-size: 16.8px; }
 
   /* ── HERO ── */
   .hero {
@@ -98,6 +98,8 @@
     opacity: 0.03;
     pointer-events: none;
   }
+
+  .hero-logo { display: none; }
 
   /* thick rule top */
   .hero-rule-top {
@@ -445,7 +447,7 @@
     gap: 16px;
   }
 
-  .footer-logo { height: 36px; opacity: 0.7; }
+  .footer-logo { height: 90px; opacity: 0.7; }
 
   .footer-copy {
     font-size: 11px;
@@ -502,9 +504,10 @@
       border-radius: 999px;
       box-shadow: 0 4px 24px rgba(28,26,20,0.12), 0 1px 4px rgba(28,26,20,0.06);
     }
-    .nav-logo { height: 48px; margin: -8px 0; }
+    .nav-logo { height: 94px; margin: -27px -5px -27px -20px; }
     .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 12px; margin-top: 0; }
     .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
+    .hero-logo { display: block; height: 105px; width: auto; margin: -25px auto 0; }
     .hero { padding: 20px 20px 40px; min-height: auto; }
     .hero-headline { font-size: 52px; }
     .hero-sub { font-size: 48px; }
@@ -533,6 +536,7 @@
 
 <!-- HERO -->
 <section class="hero">
+  <img src="cropped-beermoneylogo-1.png" alt="Beer Money" class="hero-logo">
   <div class="hero-rule-top"></div>
   <h1 class="hero-headline">
     You know your<br>
