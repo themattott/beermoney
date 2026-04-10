@@ -12,8 +12,8 @@
 
   nav { position: fixed; top: 31px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 40px; padding: 8px 40px 8px 12px; background: var(--cream); border-radius: 999px; box-shadow: 0 4px 24px rgba(28,26,20,0.10), 0 1px 4px rgba(28,26,20,0.06); transition: box-shadow 0.25s ease, background 0.25s ease; overflow: visible; }
   nav.scrolled { box-shadow: 0 6px 32px rgba(28,26,20,0.14), 0 2px 6px rgba(28,26,20,0.08); }
-  nav > a { display: block; position: relative; z-index: 1; }
-  .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; }
+  nav > a { display: block; line-height: 0; }
+  .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; position: relative; z-index: 1; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s, font-size 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; }
@@ -64,11 +64,11 @@
     footer { padding: 32px 24px; flex-direction: column; text-align: center; }
   }
   @media (max-width: 480px) {
-    nav, nav.scrolled { top: auto; bottom: 12px; left: 50%; transform: translateX(-50%); padding: 6px 24px 6px 8px; background: var(--cream); border-radius: 999px; box-shadow: 0 4px 24px rgba(28,26,20,0.12), 0 1px 4px rgba(28,26,20,0.06); }
+    nav, nav.scrolled { top: auto; bottom: 16px; left: 50%; transform: translateX(-50%); padding: 6px 16px 6px 4px; background: var(--cream); border-radius: 999px; box-shadow: 0 4px 24px rgba(28,26,20,0.12), 0 1px 4px rgba(28,26,20,0.06); gap: 12px; }
     nav > a { margin-top: 0; margin-bottom: 0; }
-    .nav-logo { height: 94px; margin: -27px -5px -27px -20px; }
-    .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 12px; margin-top: 0; }
-    .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
+    .nav-logo { height: 94px; margin: -23px -5px -31px 0px; }
+    .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 8px; margin-top: 0; }
+    .nav-links a { font-size: 11px; letter-spacing: 0.5px; }
     .page-header { padding: 20px 20px 24px; }
     .page-title { font-size: 56px; }
     .team { padding: 24px 20px 48px; }
