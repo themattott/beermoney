@@ -13,7 +13,7 @@
   nav { position: fixed; top: 31px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 40px; padding: 8px 40px 8px 12px; background: var(--cream); border-radius: 999px; box-shadow: 0 4px 24px rgba(28,26,20,0.10), 0 1px 4px rgba(28,26,20,0.06); transition: box-shadow 0.25s ease, background 0.25s ease; overflow: visible; }
   nav.scrolled { box-shadow: 0 6px 32px rgba(28,26,20,0.14), 0 2px 6px rgba(28,26,20,0.08); }
   nav > a { display: block; line-height: 0; }
-  .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; position: relative; z-index: 1; }
+  .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; position: relative; z-index: 1; transform-origin: center bottom; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s, font-size 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; }
@@ -144,9 +144,47 @@
 
 <script>
   const nav = document.querySelector('nav');
+  const logo = document.querySelector('.nav-logo');
+  let lastScrollY = window.scrollY;
+  let scrollDelta = 0;
+  let scrollTimer = null;
+  let wobbleRAF = null;
+  let currentTilt = 0;
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
+    const dy = window.scrollY - lastScrollY;
+    lastScrollY = window.scrollY;
+    scrollDelta += dy;
+    const targetTilt = Math.max(-2.5, Math.min(2.5, scrollDelta * 0.15));
+    currentTilt += (targetTilt - currentTilt) * 0.3;
+    logo.style.transform = 'rotate(' + currentTilt.toFixed(2) + 'deg)';
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      startSettleWobble(currentTilt);
+      scrollDelta = 0;
+      currentTilt = 0;
+    }, 80);
   });
+
+  function startSettleWobble(startAngle) {
+    if (wobbleRAF) cancelAnimationFrame(wobbleRAF);
+    let angle = startAngle;
+    let vel = 0;
+    function tick() {
+      vel -= angle * 0.35;
+      vel *= 0.78;
+      angle += vel;
+      if (Math.abs(angle) > 0.1 || Math.abs(vel) > 0.1) {
+        logo.style.transform = 'rotate(' + angle.toFixed(1) + 'deg)';
+        wobbleRAF = requestAnimationFrame(tick);
+      } else {
+        logo.style.transform = 'rotate(0deg)';
+        wobbleRAF = null;
+      }
+    }
+    wobbleRAF = requestAnimationFrame(tick);
+  }
 </script>
 </body>
 </html>

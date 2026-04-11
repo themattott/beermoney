@@ -53,6 +53,7 @@
     margin: -36px 0 -44px -20px;
     position: relative;
     z-index: 1;
+    transform-origin: center bottom;
   }
 
   .nav-links {
@@ -74,6 +75,22 @@
   }
 
   .nav-links a:hover { color: var(--gold); font-size: 16.8px; }
+
+  /* ── PENNANT BANNER ── */
+  .pennant {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .pennant svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 
   /* ── HERO ── */
   .hero {
@@ -103,11 +120,7 @@
 
   /* thick rule top */
   .hero-rule-top {
-    width: 80px;
-    height: 4px;
-    background: var(--red);
-    margin-bottom: 16px;
-    animation: fadeUp 0.8s ease both;
+    display: none;
   }
 
   .hero-eyebrow {
@@ -129,6 +142,7 @@
     text-transform: uppercase;
     color: var(--black);
     animation: fadeUp 1s 0.15s ease both;
+    transform: translateY(-15px);
   }
 
   .hero-headline em {
@@ -140,8 +154,11 @@
   .hero-divider {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
-    margin: 12px 0;
+    width: 200px;
+    margin: 12px 0 4px 0;
+    transform: translateY(-30px);
     animation: fadeUp 1s 0.25s ease both;
   }
 
@@ -168,6 +185,7 @@
     text-transform: uppercase;
     line-height: 0.92;
     animation: fadeUp 1s 0.3s ease both;
+    transform: translateY(-15px);
   }
 
   .hero-sub .accent {
@@ -549,6 +567,12 @@
 </nav>
 
 <!-- HERO -->
+<div class="pennant">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 1440,0 1440,40 720,120 0,40" fill="var(--gold)"/>
+  </svg>
+</div>
+
 <section class="hero">
   <img src="cropped-beermoneylogo-1.png" alt="Beer Money" class="hero-logo">
   <div class="hero-rule-top"></div>
@@ -611,9 +635,47 @@
 
 <script>
   const nav = document.querySelector('nav');
+  const logo = document.querySelector('.nav-logo');
+  let lastScrollY = window.scrollY;
+  let scrollDelta = 0;
+  let scrollTimer = null;
+  let wobbleRAF = null;
+  let currentTilt = 0;
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
+    const dy = window.scrollY - lastScrollY;
+    lastScrollY = window.scrollY;
+    scrollDelta += dy;
+    const targetTilt = Math.max(-2.5, Math.min(2.5, scrollDelta * 0.15));
+    currentTilt += (targetTilt - currentTilt) * 0.3;
+    logo.style.transform = 'rotate(' + currentTilt.toFixed(2) + 'deg)';
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      startSettleWobble(currentTilt);
+      scrollDelta = 0;
+      currentTilt = 0;
+    }, 80);
   });
+
+  function startSettleWobble(startAngle) {
+    if (wobbleRAF) cancelAnimationFrame(wobbleRAF);
+    let angle = startAngle;
+    let vel = 0;
+    function tick() {
+      vel -= angle * 0.35;
+      vel *= 0.78;
+      angle += vel;
+      if (Math.abs(angle) > 0.1 || Math.abs(vel) > 0.1) {
+        logo.style.transform = 'rotate(' + angle.toFixed(1) + 'deg)';
+        wobbleRAF = requestAnimationFrame(tick);
+      } else {
+        logo.style.transform = 'rotate(0deg)';
+        wobbleRAF = null;
+      }
+    }
+    wobbleRAF = requestAnimationFrame(tick);
+  }
 </script>
 </body>
 </html>
