@@ -10,7 +10,7 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root { --cream:#F5F0E8; --red:#C0392B; --gold:#D4900A; --black:#1C1A14; --smoke:#8a7f6e; }
-  html, body { background: var(--black); color: var(--cream); font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; }
+  html, body { background: var(--cream); color: var(--black); font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; }
 
   nav { position: fixed; top: 31px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 40px; padding: 8px 40px 8px 12px; background: var(--cream); border-radius: 999px; box-shadow: 0 4px 24px rgba(28,26,20,0.10), 0 1px 4px rgba(28,26,20,0.06); transition: box-shadow 0.25s ease, background 0.25s ease; overflow: visible; }
   nav.scrolled { box-shadow: 0 6px 32px rgba(28,26,20,0.14), 0 2px 6px rgba(28,26,20,0.08); }
@@ -18,35 +18,43 @@
   .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; position: relative; z-index: 1; transform-origin: center bottom; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s, font-size 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; text-shadow: 0 2px 8px rgba(212,144,10,0.35); }
+
+  /* ── PENNANT BANNER ── */
+  .pennant { position: absolute; top: -15px; left: 0; right: 0; height: 120px; z-index: 0; pointer-events: none; }
+  .pennant svg { width: 100%; height: 100%; display: block; }
 
   /* MAIN LAYOUT — two columns */
   .summon-wrap { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
 
   /* LEFT — copy */
-  .summon-left { padding: 140px 64px 80px 48px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(245,240,232,0.08); }
+  .summon-left { padding: 140px 64px 80px 48px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(28,26,20,0.08); }
   .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-  .page-title { font-size: clamp(64px, 9vw, 120px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; color: var(--cream); margin-bottom: 36px; }
+  .page-title { font-size: clamp(68px, 12vw, 140px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; color: var(--black); margin-bottom: 16px; margin-top: 0; }
   .page-title em { font-style: normal; color: var(--red); }
-  .page-sub { font-size: 17px; font-weight: 300; letter-spacing: 0.5px; color: rgba(245,240,232,0.6); line-height: 1.7; max-width: 420px; margin-bottom: 56px; }
+  .page-sub { font-size: 17px; font-weight: 300; letter-spacing: 0.5px; color: rgba(28,26,20,0.7); line-height: 1.7; max-width: 420px; margin-bottom: 32px; }
 
-  .contact-methods { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(245,240,232,0.1); }
-  .contact-method { padding: 24px 0; border-bottom: 1px solid rgba(245,240,232,0.1); display: flex; flex-direction: column; gap: 4px; transition: padding-left 0.25s; }
+  .contact-methods { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(28,26,20,0.1); }
+  .contact-method { padding: 24px 0; border-bottom: 1px solid rgba(28,26,20,0.1); display: flex; flex-direction: column; gap: 4px; transition: padding-left 0.25s; }
   .contact-method:hover { padding-left: 12px; }
   .contact-method-label { font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--smoke); }
-  .contact-method-value { font-size: 18px; font-weight: 400; letter-spacing: 1px; color: var(--gold); text-decoration: none; transition: color 0.2s; }
-  .contact-method-value:hover { color: var(--cream); }
-  .contact-method-sub { font-size: 12px; font-weight: 300; letter-spacing: 0.5px; color: rgba(245,240,232,0.35); }
+  .contact-method-value { font-size: 18px; font-weight: 400; letter-spacing: 1px; color: var(--smoke); text-decoration: none; transition: color 0.2s; }
+  .contact-method-value:hover { color: var(--gold); }
+  .contact-method-sub { font-size: 12px; font-weight: 300; letter-spacing: 0.5px; color: rgba(28,26,20,0.5); }
 
-  .location-grid { margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid rgba(245,240,232,0.1); }
-  .location { padding: 24px 24px 24px 0; border-right: 1px solid rgba(245,240,232,0.1); }
+  .location-grid { margin-top: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: none; }
+
+  @media (max-width: 900px) {
+    .location-grid { margin-top: 0; }
+  }
+  .location { padding: 24px 24px 24px 0; border-right: 1px solid rgba(28,26,20,0.1); }
   .location:last-child { padding-left: 24px; padding-right: 0; border-right: none; }
-  .location-city { font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--cream); margin-bottom: 4px; }
-  .location-detail { font-size: 12px; font-weight: 300; letter-spacing: 1px; color: rgba(245,240,232,0.35); }
+  .location-city { font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--black); margin-bottom: 4px; }
+  .location-detail { font-size: 12px; font-weight: 300; letter-spacing: 1px; color: rgba(28,26,20,0.5); }
 
   /* RIGHT — form */
   .summon-right { padding: 140px 48px 80px 64px; display: flex; flex-direction: column; justify-content: center; }
-  .form-heading { font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
+  .form-heading { font-size: 22px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
 
   .form-group { margin-bottom: 28px; }
   .form-group label { display: block; font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--smoke); margin-bottom: 10px; }
@@ -55,9 +63,9 @@
   .form-group select,
   .form-group textarea {
     width: 100%;
-    background: rgba(245,240,232,0.04);
-    border: 1px solid rgba(245,240,232,0.12);
-    color: var(--cream);
+    background: #ffffff;
+    border: 1px solid rgba(28,26,20,0.2);
+    color: var(--black);
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 16px;
     font-weight: 300;
@@ -72,13 +80,13 @@
   .form-group select:focus,
   .form-group textarea:focus {
     border-color: var(--gold);
-    background: rgba(212,144,10,0.05);
+    background: rgba(212,144,10,0.08);
   }
 
-  .form-group select option { background: var(--black); }
+  .form-group select option { background: #ffffff; color: var(--black); }
   .form-group textarea { resize: vertical; min-height: 120px; }
   .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(245,240,232,0.2); }
+  .form-group textarea::placeholder { color: rgba(28,26,20,0.3); }
 
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
@@ -99,17 +107,23 @@
   }
   .submit-btn:hover { background: var(--gold); color: var(--black); }
 
-  .form-note { font-size: 11px; font-weight: 300; letter-spacing: 0.5px; color: rgba(245,240,232,0.3); margin-top: 16px; line-height: 1.5; }
+  .form-note { font-size: 11px; font-weight: 300; letter-spacing: 0.5px; color: rgba(28,26,20,0.5); margin-top: 16px; line-height: 1.5; }
 
-  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer { background: var(--black); border-top: 1px solid rgba(28,26,20,0.2); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   .footer-logo { height: 90px; opacity: 0.7; }
   .footer-copy { font-size: 11px; letter-spacing: 2px; color: rgba(245,240,232,0.35); text-transform: uppercase; }
   .footer-contact a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
 
   @media (max-width: 900px) {
     .summon-wrap { grid-template-columns: 1fr; }
-    .summon-left { padding: 120px 24px 48px; border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); }
+    .summon-left { padding: 120px 24px 20px; border-right: none; border-bottom: 1px solid rgba(28,26,20,0.08); justify-content: flex-start; }
     .summon-right { padding: 48px 24px 80px; }
+    .page-title { margin-bottom: 12px; }
+    .page-sub { margin-bottom: 12px; }
+    .contact-methods { display: grid; grid-template-columns: 1fr 1fr; border-top: none; }
+    .contact-method { border-bottom: none; border-right: 1px solid rgba(28,26,20,0.1); padding-right: 24px; }
+    .contact-method:last-child { border-right: none; padding-right: 0; padding-left: 24px; }
+    .contact-method:last-child:hover { padding-left: 36px; }
     nav { padding: 16px 24px; }
     .nav-links { gap: 20px; }
     footer { padding: 32px 24px; flex-direction: column; text-align: center; }
@@ -120,13 +134,19 @@
     .nav-logo { height: 94px; margin: -23px -5px -31px -30px; }
     .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 12px; margin-top: 0; }
     .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
-    .summon-left { padding: 20px 20px 36px; }
-    .page-title { font-size: 48px; }
-    .summon-right { padding: 36px 20px 60px; }
+    .pennant { height: 32px; top: 0; }
+    .summon-left { padding: 52px 16px 24px; border-bottom: none; }
+    .page-title { font-size: 44px; margin-bottom: 8px; }
+    .page-sub { margin-bottom: 8px; }
+    .summon-right { padding: 4px 16px 60px; }
+    .form-heading { font-size: 28px; letter-spacing: 1px; margin-bottom: 24px; white-space: nowrap; overflow: hidden; }
+    .contact-methods { display: flex; flex-direction: column; border-top: none; }
+    .contact-method { border-right: none; border-bottom: 1px solid rgba(28,26,20,0.1); padding: 12px 0; margin: 0; }
+    .contact-method:last-child { border-bottom: 1px solid rgba(28,26,20,0.1); padding: 12px 0 8px 0; }
     .form-row { grid-template-columns: 1fr; }
-    .location-grid { grid-template-columns: 1fr; }
-    .location { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.1); padding: 16px 0; }
-    .location:last-child { border-bottom: none; padding-left: 0; }
+    .location-grid { grid-template-columns: 1fr; margin-bottom: 0; }
+    .location { border-right: none; border-bottom: 1px solid rgba(28,26,20,0.1); padding: 8px 0; }
+    .location:last-child { border-bottom: 1px solid rgba(28,26,20,0.1); padding: 8px 0; }
     footer { padding: 24px 20px 80px; }
   }
 </style>
@@ -144,12 +164,17 @@
   </ul>
 </nav>
 
+<div class="pennant">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 1440,0 1440,40 720,120 0,40" fill="var(--gold)"/>
+  </svg>
+</div>
+
 <main class="summon-wrap">
 
   <div class="summon-left">
-    <p class="page-label">Contact</p>
     <h1 class="page-title">Sum&shy;mon<br><em>us.</em></h1>
-    <p class="page-sub">Got a brief, a budget, or just a vague feeling that your brand should be funnier? That&rsquo;s enough. We can take it from there.</p>
+    <p class="page-sub">Got a brief, a budget, or just a gnawing feeling that your brand should be funnier? Let&rsquo;s connect!</p>
 
     <div class="contact-methods">
       <a class="contact-method" href="mailto:matt@summonbeermoney.com">
@@ -177,7 +202,7 @@
   </div>
 
   <div class="summon-right">
-    <p class="form-heading">Send us the brief</p>
+    <p class="form-heading">Let's set up the punchline</p>
     <form action="mailto:matt@summonbeermoney.com" method="POST" enctype="text/plain">
       <div class="form-row">
         <div class="form-group">
@@ -201,7 +226,8 @@
           <option>Script &amp; Creative Development</option>
           <option>Comedy Punch-Up</option>
           <option>Talent &amp; Production</option>
-          <option>Something else entirely</option>
+          <option>A Good Laugh</option>
+          <option>...something else</option>
         </select>
       </div>
       <div class="form-group">

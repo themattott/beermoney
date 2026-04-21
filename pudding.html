@@ -18,35 +18,42 @@
   .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; position: relative; z-index: 1; transform-origin: center bottom; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s, font-size 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; text-shadow: 0 2px 8px rgba(212,144,10,0.35); }
 
-  .page-header { padding: 120px 48px 40px; border-bottom: 1px solid rgba(28,26,20,0.12); }
-  .page-title-aside { display: block; font-size: 0.22em; font-weight: 300; letter-spacing: 1px; text-transform: none; color: var(--smoke); font-family: 'Barlow Condensed', sans-serif; margin-top: 4px; }
+  /* ── PENNANT BANNER ── */
+  .pennant { position: absolute; top: -15px; left: 0; right: 0; height: 120px; z-index: 0; pointer-events: none; }
+  .pennant svg { width: 100%; height: 100%; display: block; }
+
+  .page-header { padding: 80px 48px 24px; border-bottom: 1px solid rgba(28,26,20,0.12); }
+  .page-title-aside { display: block; font-size: 0.22em; font-weight: 300; letter-spacing: 1px; text-transform: none; color: var(--smoke); font-family: 'Barlow Condensed', sans-serif; margin-top: 4px; padding-left: 34px; }
   .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
   .page-title { font-size: clamp(72px, 12vw, 140px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
   .page-title em { font-style: normal; color: var(--gold); }
-  .page-sub { margin-top: 28px; font-size: 18px; font-weight: 300; letter-spacing: 1px; color: var(--smoke); max-width: 560px; line-height: 1.6; }
+  .page-sub { margin-top: 14px; font-size: 16px; font-weight: 300; letter-spacing: 1px; color: var(--smoke); max-width: 560px; line-height: 1.3; text-align: center; font-style: italic; }
 
   /* WORK GRID */
   .work { padding: 40px 48px 100px; }
-  .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 
   .work-item { position: relative; background: var(--black); overflow: hidden; aspect-ratio: 16/9; cursor: pointer; }
-  .work-item-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--black) 0%, #2a2418 100%); }
+  .work-item-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--black) 0%, #2a2418 100%); background-size: cover; background-position: center; }
+  .work-item-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(28,26,20,0.75) 0%, rgba(42,36,24,0.85) 100%); }
   .work-item-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(212,144,10,0.12) 1px, transparent 1px); background-size: 24px 24px; }
 
   /* featured item spans 2 cols */
   .work-item.featured { grid-column: span 2; aspect-ratio: 21/9; }
 
-  .work-item-content { position: absolute; inset: 0; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .work-item-tag { font-size: 9px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  .work-item-client { font-size: clamp(22px, 3vw, 36px); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--cream); line-height: 1; margin-bottom: 8px; }
-  .work-item-desc { font-size: 13px; font-weight: 300; letter-spacing: 0.5px; color: rgba(245,240,232,0.55); line-height: 1.5; max-width: 420px; }
+  .work-item-content { position: absolute; inset: 0; padding: 32px; display: flex; flex-direction: column; transition: opacity 0.3s; }
+  .work-item:hover .work-item-content { opacity: 0; pointer-events: none; }
+  .work-item-tag { font-size: 9px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; margin-left: 5px; order: 1; }
+  .work-item-client { font-size: clamp(22px, 3vw, 36px); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--cream); line-height: 1; margin-bottom: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+  .work-item-desc { font-size: 13px; font-weight: 300; letter-spacing: 0.5px; color: var(--cream); line-height: 1.5; max-width: 420px; order: 2; margin-top: auto; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 
   /* overlay on hover */
-  .work-item-overlay { position: absolute; inset: 0; background: var(--red); opacity: 0; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; }
-  .work-item:hover .work-item-overlay { opacity: 0.92; }
-  .work-item-overlay-text { font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--cream); text-align: center; padding: 24px; }
+  .work-item-overlay { position: absolute; inset: 0; background: transparent; opacity: 0; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; }
+  .work-item:hover .work-item-overlay { opacity: 1; }
+  .work-item:hover .work-item-bg::after { opacity: 0; }
+  .work-item-overlay-text { font-size: 20px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--cream); background: var(--gold); padding: 6px; border-radius: 6px; margin: 0; display: inline-block; box-shadow: 0 6px 16px rgba(0,0,0,0.5); }
 
   /* accent line on left edge */
   .work-item::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--gold); z-index: 2; }
@@ -75,14 +82,14 @@
   .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(28,26,20,0.92); align-items: center; justify-content: center; }
   .lightbox.open { display: flex; }
   .lightbox-wrap { position: relative; width: 90vw; max-width: 1100px; }
-  .lightbox-close { position: absolute; top: -40px; right: 0; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); cursor: pointer; opacity: 0.6; transition: opacity 0.2s; background: none; border: none; font-family: inherit; }
+  .lightbox-close { position: absolute; top: -44px; right: 0; font-size: 17px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); cursor: pointer; opacity: 0.6; transition: opacity 0.2s; background: none; border: none; font-family: inherit; }
   .lightbox-close:hover { opacity: 1; }
   .lightbox-frame { position: relative; width: 100%; aspect-ratio: 16/9; }
   .lightbox-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-  .lightbox-playlist { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
-  .lightbox-pill { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.7); background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.18); padding: 6px 16px; cursor: pointer; font-family: inherit; transition: background 0.2s, color 0.2s, border-color 0.2s; }
-  .lightbox-pill:hover { color: var(--cream); background: rgba(245,240,232,0.15); }
-  .lightbox-pill.active { background: var(--red); border-color: var(--red); color: var(--cream); }
+  .lightbox-playlist { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; justify-content: center; }
+  .lightbox-pill { font-size: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); background: var(--gold); border: 1px solid var(--gold); padding: 8px 18px; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
+  .lightbox-pill:hover { opacity: 0.85; }
+  .lightbox-pill.active { opacity: 1; }
 
   @media (max-width: 768px) {
     .work-item.featured { grid-column: span 1; aspect-ratio: 16/9; }
@@ -98,17 +105,20 @@
     .nav-logo { height: 94px; margin: -23px -5px -31px -30px; }
     .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 12px; margin-top: 0; }
     .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
-    .page-header { padding: 20px 20px 24px; }
+    .pennant { height: 32px; top: 0; }
+    .page-header { padding: 56px 20px 12px; }
     .page-title { font-size: 56px; }
-    .work { padding: 24px 20px 64px; }
+    .page-title-aside { padding-left: 3px; }
+    .page-sub { font-size: 12px; }
+    .work { padding: 24px 20px; }
     .work-grid { grid-template-columns: 1fr; }
     .work-item-client { font-size: 22px; }
-    .stat-band { padding: 40px 20px; }
+    .stat-band { padding: 16px 20px; }
     .stat-grid { flex-direction: column; gap: 0; }
-    .stat { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.1); padding: 20px 0; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.1); padding: 12px 0; }
     .stat:last-child { border-bottom: none; }
     .placeholder-note { margin: 0 20px 20px; }
-    footer { padding: 24px 20px 80px; }
+    footer { padding: 16px 20px 80px; }
   }
 </style>
 </head>
@@ -125,15 +135,21 @@
   </ul>
 </nav>
 
+<div class="pennant">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 1440,0 1440,40 720,120 0,40" fill="var(--gold)"/>
+  </svg>
+</div>
+
 <header class="page-header">
   <h1 class="page-title">The<br><em>pudding.<span class="page-title-aside">(you know, where the proof is)</span></em></h1>
-  <p class="page-sub">As you&rsquo;re aware, you don&rsquo;t explain a joke.<br>We don&rsquo;t explain the work.</p>
+  <p class="page-sub">As you&rsquo;re well aware, you don&rsquo;t explain a joke.<br>Well, we don&rsquo;t explain the work.</p>
 </header>
 
 <section class="work">
   <div class="work-grid">
 
-    <div class="work-item featured red-accent" data-videos='[]'>
+    <div class="work-item" data-videos='[{"label":"The Chit Show","url":"https://www.youtube.com/embed/HMCnnLJ2Xgg"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -141,7 +157,7 @@
         <p class="work-item-client">The Chit Show</p>
         <p class="work-item-desc">Co-created by Kiel Kennedy out of The Groundlings. Grew to over a million followers in six months.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
     <div class="work-item" data-videos='[{"label":"The Busch Guy\u2019d","url":"https://player.vimeo.com/video/757310145"}]'>
@@ -152,7 +168,7 @@
         <p class="work-item-client">Busch Light</p>
         <p class="work-item-desc">Comedy-first branded campaign.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
     <div class="work-item" data-videos='[{"label":"Full","url":"https://player.vimeo.com/video/705548487"},{"label":"30s","url":"https://player.vimeo.com/video/710831218?h=5133750744"},{"label":"15s","url":"https://player.vimeo.com/video/710831531?h=fcb167c032"}]'>
@@ -163,7 +179,7 @@
         <p class="work-item-client">BarkBox</p>
         <p class="work-item-desc">Comedy content for one of the fastest-growing pet brands.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
     <div class="work-item" data-videos='[{"label":"Bubba Joins the Dark Side","url":"https://player.vimeo.com/video/1035312139?h=f08ea8a8c1"}]'>
@@ -174,10 +190,10 @@
         <p class="work-item-client">Star Wars / NASCAR / Columbia</p>
         <p class="work-item-desc">When two massive IPs collide — comedy is the connector.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Stretching","url":"https://player.vimeo.com/video/1035309907?h=55bc3b0f7d"},{"label":"Smoothie","url":"https://player.vimeo.com/video/1035309757?h=0719e0256b"},{"label":"Skincare","url":"https://player.vimeo.com/video/1035309631?h=1de10a6d5d"}]'>
+    <div class="work-item" data-videos='[{"label":"Smoothie","url":"https://player.vimeo.com/video/1035309757?h=0719e0256b"},{"label":"Stretching","url":"https://player.vimeo.com/video/1035309907?h=55bc3b0f7d"},{"label":"Skincare","url":"https://player.vimeo.com/video/1035309631?h=1de10a6d5d"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -185,10 +201,10 @@
         <p class="work-item-client">Diablo 4 / Activision</p>
         <p class="work-item-desc">Comedy content for one of gaming&rsquo;s biggest launches.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[]'>
+    <div class="work-item" data-videos='[{"label":"Comedy Central","url":"https://www.youtube.com/embed/TF0jQY2igPk"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -196,7 +212,7 @@
         <p class="work-item-client">Comedy Central</p>
         <p class="work-item-desc">Making comedy content for the comedy channel.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
     <div class="work-item" data-videos='[{"label":"Gluten 15s","url":"https://player.vimeo.com/video/440801907"},{"label":"Carbs 15s","url":"https://player.vimeo.com/video/442740806"},{"label":"Sugar 15s","url":"https://player.vimeo.com/video/442740805"}]'>
@@ -207,7 +223,7 @@
         <p class="work-item-client">Magic Spoon</p>
         <p class="work-item-desc">Cereal for adults. Comedy that earns the scroll stop.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
     <div class="work-item" data-videos='[{"label":"Body Double","url":"https://player.vimeo.com/video/1005685556?h=ea2ae0ee9a"},{"label":"Yoga","url":"https://player.vimeo.com/video/1073688146?h=7464ff44a3"},{"label":"Fitness","url":"https://player.vimeo.com/video/1073688023?h=e19bf07683"},{"label":"Girl\u2019s Night","url":"https://player.vimeo.com/video/1073687940?h=c232a9ac49"},{"label":"Bedtime","url":"https://player.vimeo.com/video/1073687720?h=c95f9b1542"},{"label":"Morning","url":"https://player.vimeo.com/video/1073687805?h=5d1ef052b1"},{"label":"Bath","url":"https://player.vimeo.com/video/1073687889?h=04885f3daf"},{"label":"Launch Promo","url":"https://player.vimeo.com/video/1073688254?h=a3c7261e45"}]'>
@@ -218,7 +234,7 @@
         <p class="work-item-client">Lyre&rsquo;s Non-Alcoholic</p>
         <p class="work-item-desc">All the taste, all the laughs, none of the hangover.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
     <div class="work-item" data-videos='[{"label":"Wear a Mask. Properly.","url":"https://player.vimeo.com/video/418322761"}]'>
@@ -229,7 +245,7 @@
         <p class="work-item-client">New York State</p>
         <p class="work-item-desc">Comedy in service of the public. Turns out it works here too.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
   </div>
@@ -289,6 +305,10 @@
       if (pill) pill.classList.add('active');
     }
     if (videos.length > 1) {
+      const label = document.createElement('p');
+      label.textContent = 'Click for more:';
+      label.style.cssText = 'font-family:inherit;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cream);width:100%;text-align:center;margin-bottom:8px;opacity:0.7;';
+      lightboxPlaylist.appendChild(label);
       videos.forEach((v, i) => {
         const pill = document.createElement('button');
         pill.className = 'lightbox-pill' + (i === 0 ? ' active' : '');
@@ -321,6 +341,41 @@
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Load thumbnails for videos
+  document.querySelectorAll('.work-item[data-videos]').forEach(item => {
+    const videos = JSON.parse(item.dataset.videos);
+    if (!videos.length) return;
+    const firstUrl = videos[0].url;
+    const bg = item.querySelector('.work-item-bg');
+    if (!bg) return;
+
+    // YouTube
+    if (firstUrl.includes('youtube.com')) {
+      const id = firstUrl.match(/embed\/([^?]+)/)?.[1];
+      if (id) bg.style.backgroundImage = `url('https://img.youtube.com/vi/${id}/maxresdefault.jpg')`;
+      return;
+    }
+
+    // Vimeo
+    if (firstUrl.includes('vimeo.com')) {
+      const idMatch = firstUrl.match(/video\/(\d+)(?:\?h=([a-f0-9]+))?/);
+      const id = idMatch?.[1];
+      const hash = idMatch?.[2];
+      if (!id) return;
+      const vimeoUrl = hash ? `https://vimeo.com/${id}/${hash}` : `https://vimeo.com/${id}`;
+      fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent(vimeoUrl)}`)
+        .then(r => r.json())
+        .then(d => {
+          if (d.thumbnail_url) {
+            // Upgrade to high-res: replace _295x166 with _1280x720
+            const hiResThumbnail = d.thumbnail_url.replace(/-d_\d+x\d+/, '-d_1280x720');
+            bg.style.backgroundImage = `url('${hiResThumbnail}')`;
+          }
+        })
+        .catch(() => {});
+    }
+  });
 
   const nav = document.querySelector('nav');
   const logo = document.querySelector('.nav-logo');
