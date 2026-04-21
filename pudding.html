@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pudding — Beer Money</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -69,6 +71,19 @@
   .footer-copy { font-size: 11px; letter-spacing: 2px; color: rgba(245,240,232,0.35); text-transform: uppercase; }
   .footer-contact a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
 
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(28,26,20,0.92); align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-wrap { position: relative; width: 90vw; max-width: 1100px; }
+  .lightbox-close { position: absolute; top: -40px; right: 0; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); cursor: pointer; opacity: 0.6; transition: opacity 0.2s; background: none; border: none; font-family: inherit; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-frame { position: relative; width: 100%; aspect-ratio: 16/9; }
+  .lightbox-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .lightbox-playlist { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .lightbox-pill { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.7); background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.18); padding: 6px 16px; cursor: pointer; font-family: inherit; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .lightbox-pill:hover { color: var(--cream); background: rgba(245,240,232,0.15); }
+  .lightbox-pill.active { background: var(--red); border-color: var(--red); color: var(--cream); }
+
   @media (max-width: 768px) {
     .work-item.featured { grid-column: span 1; aspect-ratio: 16/9; }
     nav { padding: 16px 24px; }
@@ -116,13 +131,9 @@
 </header>
 
 <section class="work">
-  <div class="placeholder-note">
-    <p><strong>For you to fill in:</strong> Drop video embeds, links, or screenshots into each card below. Each <code>.work-item</code> can hold a thumbnail image, an iframe, or a link to an external video. The grid is ready to go.</p>
-  </div>
-
   <div class="work-grid">
 
-    <div class="work-item featured red-accent">
+    <div class="work-item featured red-accent" data-videos='[]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -130,10 +141,10 @@
         <p class="work-item-client">The Chit Show</p>
         <p class="work-item-desc">Co-created by Kiel Kennedy out of The Groundlings. Grew to over a million followers in six months.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"The Busch Guy\u2019d","url":"https://player.vimeo.com/video/757310145"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -141,10 +152,10 @@
         <p class="work-item-client">Busch Light</p>
         <p class="work-item-desc">Comedy-first branded campaign.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"Full","url":"https://player.vimeo.com/video/705548487"},{"label":"30s","url":"https://player.vimeo.com/video/710831218?h=5133750744"},{"label":"15s","url":"https://player.vimeo.com/video/710831531?h=fcb167c032"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -152,21 +163,21 @@
         <p class="work-item-client">BarkBox</p>
         <p class="work-item-desc">Comedy content for one of the fastest-growing pet brands.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"Bubba Joins the Dark Side","url":"https://player.vimeo.com/video/1035312139?h=f08ea8a8c1"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
         <p class="work-item-tag">Entertainment &bull; Collab</p>
-        <p class="work-item-client">Star Wars / NASCAR</p>
+        <p class="work-item-client">Star Wars / NASCAR / Columbia</p>
         <p class="work-item-desc">When two massive IPs collide — comedy is the connector.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"Stretching","url":"https://player.vimeo.com/video/1035309907?h=55bc3b0f7d"},{"label":"Smoothie","url":"https://player.vimeo.com/video/1035309757?h=0719e0256b"},{"label":"Skincare","url":"https://player.vimeo.com/video/1035309631?h=1de10a6d5d"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -174,21 +185,10 @@
         <p class="work-item-client">Diablo 4 / Activision</p>
         <p class="work-item-desc">Comedy content for one of gaming&rsquo;s biggest launches.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
-      <div class="work-item-bg"></div>
-      <div class="work-item-pattern"></div>
-      <div class="work-item-content">
-        <p class="work-item-tag">Apparel &bull; Campaign</p>
-        <p class="work-item-client">Columbia Sportswear</p>
-        <p class="work-item-desc">Outdoor gear meets stand-up energy.</p>
-      </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
-    </div>
-
-    <div class="work-item">
+    <div class="work-item" data-videos='[]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -196,10 +196,10 @@
         <p class="work-item-client">Comedy Central</p>
         <p class="work-item-desc">Making comedy content for the comedy channel.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"Gluten 15s","url":"https://player.vimeo.com/video/440801907"},{"label":"Carbs 15s","url":"https://player.vimeo.com/video/442740806"},{"label":"Sugar 15s","url":"https://player.vimeo.com/video/442740805"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -207,10 +207,10 @@
         <p class="work-item-client">Magic Spoon</p>
         <p class="work-item-desc">Cereal for adults. Comedy that earns the scroll stop.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"Body Double","url":"https://player.vimeo.com/video/1005685556?h=ea2ae0ee9a"},{"label":"Yoga","url":"https://player.vimeo.com/video/1073688146?h=7464ff44a3"},{"label":"Fitness","url":"https://player.vimeo.com/video/1073688023?h=e19bf07683"},{"label":"Girl\u2019s Night","url":"https://player.vimeo.com/video/1073687940?h=c232a9ac49"},{"label":"Bedtime","url":"https://player.vimeo.com/video/1073687720?h=c95f9b1542"},{"label":"Morning","url":"https://player.vimeo.com/video/1073687805?h=5d1ef052b1"},{"label":"Bath","url":"https://player.vimeo.com/video/1073687889?h=04885f3daf"},{"label":"Launch Promo","url":"https://player.vimeo.com/video/1073688254?h=a3c7261e45"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -218,10 +218,10 @@
         <p class="work-item-client">Lyre&rsquo;s Non-Alcoholic</p>
         <p class="work-item-desc">All the taste, all the laughs, none of the hangover.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item" data-videos='[{"label":"Wear a Mask. Properly.","url":"https://player.vimeo.com/video/418322761"}]'>
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -229,7 +229,7 @@
         <p class="work-item-client">New York State</p>
         <p class="work-item-desc">Comedy in service of the public. Turns out it works here too.</p>
       </div>
-      <div class="work-item-overlay"><p class="work-item-overlay-text">Add video or link</p></div>
+      <div class="work-item-overlay"><p class="work-item-overlay-text">Watch &#8599;</p></div>
     </div>
 
   </div>
@@ -262,7 +262,66 @@
   <div class="footer-contact"><a href="mailto:matt@summonbeermoney.com">matt@summonbeermoney.com</a></div>
 </footer>
 
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-wrap">
+    <button class="lightbox-close" id="lightbox-close">Close &times;</button>
+    <div class="lightbox-frame">
+      <iframe id="lightbox-iframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="lightbox-playlist" id="lightbox-playlist"></div>
+  </div>
+</div>
+
 <script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxIframe = document.getElementById('lightbox-iframe');
+  const lightboxPlaylist = document.getElementById('lightbox-playlist');
+
+  function embedUrl(url) {
+    return url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+  }
+
+  function openLightbox(videos) {
+    lightboxPlaylist.innerHTML = '';
+    function loadVideo(url, pill) {
+      lightboxIframe.src = embedUrl(url);
+      lightboxPlaylist.querySelectorAll('.lightbox-pill').forEach(p => p.classList.remove('active'));
+      if (pill) pill.classList.add('active');
+    }
+    if (videos.length > 1) {
+      videos.forEach((v, i) => {
+        const pill = document.createElement('button');
+        pill.className = 'lightbox-pill' + (i === 0 ? ' active' : '');
+        pill.textContent = v.label;
+        pill.addEventListener('click', e => { e.stopPropagation(); loadVideo(v.url, pill); });
+        lightboxPlaylist.appendChild(pill);
+      });
+    }
+    lightboxIframe.src = embedUrl(videos[0].url);
+    lightbox.classList.add('open');
+  }
+
+  document.querySelectorAll('.work-item[data-videos]').forEach(item => {
+    const videos = JSON.parse(item.dataset.videos);
+    if (!videos.length) {
+      item.style.cursor = 'default';
+      const overlay = item.querySelector('.work-item-overlay');
+      if (overlay) overlay.style.display = 'none';
+      return;
+    }
+    item.addEventListener('click', () => openLightbox(videos));
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxIframe.src = '';
+    lightboxPlaylist.innerHTML = '';
+  }
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
   const nav = document.querySelector('nav');
   const logo = document.querySelector('.nav-logo');
   let lastScrollY = window.scrollY;
