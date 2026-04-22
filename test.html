@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beer Money</title>
+<meta property="og:image" content="cropped-beermoneylogo-1.png">
+<meta property="og:title" content="Beer Money">
+<meta property="og:description" content="We make your audience laugh. From the first brief to the final cut.">
+<link rel="icon" type="image/png" href="cropped-beermoneylogo-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
@@ -56,7 +60,6 @@
     z-index: 1;
     transform-origin: center bottom;
   }
-  /* wobble is driven by JS transform — no CSS animation */
 
   .nav-links {
     display: flex;
@@ -76,7 +79,7 @@
     transition: color 0.2s, font-size 0.2s;
   }
 
-  .nav-links a:hover { color: var(--gold); font-size: 16.8px; text-shadow: 0 2px 8px rgba(212,144,10,0.35); }
+  .nav-links a:hover { color: var(--gold); font-size: 16.8px; text-shadow: 0 2px 6px rgba(28,26,20,0.18); }
 
   /* ── PENNANT BANNER ── */
   .pennant {
@@ -85,7 +88,7 @@
     left: 0;
     right: 0;
     height: 120px;
-    z-index: 50;
+    z-index: 0;
     pointer-events: none;
   }
   .pennant svg {
@@ -196,6 +199,19 @@
     display: block;
   }
 
+  .scroll-arrow {
+    color: var(--red);
+    font-size: 24px;
+    margin-top: 12px;
+    animation: bounce 2s ease infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
   .hero-cta {
     margin-top: 52px;
     display: flex;
@@ -295,10 +311,30 @@
     text-transform: uppercase;
     color: var(--black);
     opacity: 0.45;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, color 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
   }
 
-  .client-tag:hover { opacity: 1; }
+  .client-tag[data-videos]:hover { opacity: 1; color: var(--red); }
+  .client-tag:not([data-videos]) { cursor: default; }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(28,26,20,0.92); align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox-wrap { position: relative; width: 90vw; max-width: 1100px; }
+  .lightbox-close { position: absolute; top: -44px; right: 0; font-size: 17px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); cursor: pointer; opacity: 0.6; transition: opacity 0.2s; background: none; border: none; font-family: inherit; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-frame { position: relative; width: 100%; aspect-ratio: 16/9; }
+  .lightbox-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .lightbox-playlist { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; justify-content: center; }
+  .lightbox-pill { font-size: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); background: var(--gold); border: 1px solid var(--gold); padding: 8px 18px; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
+  .lightbox-pill:hover { opacity: 0.85; }
+  .lightbox-pill.active { opacity: 1; }
+  .lightbox-pudding-btn { display: table; margin: 8px auto 0; font-size: 13.5px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); background: var(--red); border: none; padding: 8px 20px; cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.2s; border-radius: 4px; }
+  .lightbox-pudding-btn:hover { background: var(--black); }
 
   /* ── WHAT WE DO ── */
   .services {
@@ -502,7 +538,6 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
-    nav { padding: 16px 24px; }
     .hero { padding: 100px 24px 60px; }
     .clients { padding: 48px 24px; }
     .services { padding: 64px 24px; }
@@ -516,7 +551,7 @@
   @media (max-width: 480px) {
     nav, nav.scrolled {
       top: auto;
-      bottom: 12px;
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
       padding: 6px 24px 6px 8px;
@@ -524,20 +559,23 @@
       border-radius: 999px;
       box-shadow: 0 4px 24px rgba(28,26,20,0.12), 0 1px 4px rgba(28,26,20,0.06);
     }
-    .nav-logo { height: 94px; margin: -23px -5px -31px -20px; }
+    .nav-logo { height: 94px; margin: -23px -5px -31px -30px; }
     .nav-links { position: static; transform: none; flex: 1; justify-content: center; gap: 12px; margin-top: 0; }
     .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
-    .hero-logo { display: block; height: 105px; width: auto; margin: -25px auto 0; }
-    .hero { padding: 20px 20px 40px; min-height: auto; }
+    .hero-logo { display: block; height: 105px; width: auto; margin: -19px auto 0; }
+    .pennant { height: 55px; top: -5px; }
+    .hero { padding: 41px 20px 16px; min-height: auto; }
+    .scroll-arrow { margin-top: 4px; font-size: 18px; }
     .hero-headline { font-size: 52px; }
     .hero-sub { font-size: 48px; }
     .hero-divider { margin: 8px 0; }
     .about-band { padding: 40px 20px; }
     .strategy-block { font-size: 22px; }
-    .clients { padding: 32px 20px; }
-    .client-label { font-size: 9px; margin-bottom: 16px; }
-    .client-list { font-size: 11px; gap: 6px 20px; }
-    footer { padding: 24px 20px 80px; }
+    .clients { padding: 16px 20px; }
+    .clients-label { font-size: 9px; margin-bottom: 18px; }
+    .clients-grid { gap: 6px 16px; }
+    .client-tag { font-size: 11px; }
+    footer { padding: 12px 20px 80px; gap: 8px; }
   }
 </style>
 </head>
@@ -575,16 +613,17 @@
     We&rsquo;re already<br>
     <span class="accent">making them laugh.</span>
   </p>
+  <div class="scroll-arrow">&#9660;</div>
 </section>
 
 <!-- ABOUT BAND -->
 <section class="about-band">
   <div class="strategy-block">
     <p class="strategy-text">
-      At <strong>Beer Money</strong>, our strategy is to not pay eight people to think about strategy.
-      <span class="strategy-shrink"> Then pay ten people to think about creative. </span>
-      <span class="strategy-smaller"> Then pay those eight strategists to tell us we creatively botched the strategy. </span>
-      <span class="strategy-tiny"> Then pay a new creative team to unbotch. </span>
+      At <strong>Beer Money</strong>, our strategy isn&rsquo;t to pay eight people to concoct a strategy.
+      <span class="strategy-shrink"> Then pay ten people to spin up creative. </span>
+      <span class="strategy-smaller"> Then pay the eight strategists to tell us we creatively botched the strategy. </span>
+      <span class="strategy-tiny"> Then pay eleven new people to strategically unbotch the creative. </span>
       <span class="strategy-micro"> Then remember we actually have to have money left to shoot something&hellip; </span>
       <strong class="strategy-punch"> let&rsquo;s cut to the punchline.</strong>
     </p>
@@ -599,19 +638,31 @@
 <section class="clients" id="clients">
   <p class="clients-label">Brands We&rsquo;ve Made Funny</p>
   <div class="clients-grid">
-    <span class="client-tag">Busch Light</span>
-    <span class="client-tag">BarkBox</span>
-    <span class="client-tag">Magic Spoon</span>
-    <span class="client-tag">Star Wars / NASCAR</span>
-    <span class="client-tag">Diablo 4 / Activision</span>
-    <span class="client-tag">Columbia Sportswear</span>
-    <span class="client-tag">Comedy Central</span>
-    <span class="client-tag">Lyre&rsquo;s Non-Alcoholic Spirits</span>
-    <span class="client-tag">New York State</span>
+    <button class="client-tag" data-videos='[{"label":"The Busch Guy\u2019d","url":"https://player.vimeo.com/video/757310145"}]'>Busch Light</button>
+    <button class="client-tag" data-videos='[{"label":"Full","url":"https://player.vimeo.com/video/705548487"},{"label":"30s","url":"https://player.vimeo.com/video/710831218?h=5133750744"},{"label":"15s","url":"https://player.vimeo.com/video/710831531?h=fcb167c032"}]'>BarkBox</button>
+    <button class="client-tag" data-videos='[{"label":"Gluten 15s","url":"https://player.vimeo.com/video/440801907"},{"label":"Carbs 15s","url":"https://player.vimeo.com/video/442740806"},{"label":"Sugar 15s","url":"https://player.vimeo.com/video/442740805"}]'>Magic Spoon</button>
+    <button class="client-tag" data-videos='[{"label":"Bubba Joins the Dark Side","url":"https://player.vimeo.com/video/1035312139?h=f08ea8a8c1"}]'>Star Wars / NASCAR</button>
+    <button class="client-tag" data-videos='[{"label":"Smoothie","url":"https://player.vimeo.com/video/1035309757?h=0719e0256b"},{"label":"Stretching","url":"https://player.vimeo.com/video/1035309907?h=55bc3b0f7d"},{"label":"Skincare","url":"https://player.vimeo.com/video/1035309631?h=1de10a6d5d"}]'>Diablo 4 / Activision</button>
+    <button class="client-tag" data-videos='[{"label":"Bubba Joins the Dark Side","url":"https://player.vimeo.com/video/1035312139?h=f08ea8a8c1"}]'>Columbia Sportswear</button>
+    <button class="client-tag" data-videos='[{"label":"Comedy Central","url":"https://www.youtube.com/embed/TF0jQY2igPk"}]'>Comedy Central</button>
+    <button class="client-tag" data-videos='[{"label":"Body Double","url":"https://player.vimeo.com/video/1005685556?h=ea2ae0ee9a"},{"label":"Yoga","url":"https://player.vimeo.com/video/1073688146?h=7464ff44a3"},{"label":"Fitness","url":"https://player.vimeo.com/video/1073688023?h=e19bf07683"},{"label":"Girl\u2019s Night","url":"https://player.vimeo.com/video/1073687940?h=c232a9ac49"},{"label":"Bedtime","url":"https://player.vimeo.com/video/1073687720?h=c95f9b1542"},{"label":"Morning","url":"https://player.vimeo.com/video/1073687805?h=5d1ef052b1"},{"label":"Bath","url":"https://player.vimeo.com/video/1073687889?h=04885f3daf"},{"label":"Launch Promo","url":"https://player.vimeo.com/video/1073688254?h=a3c7261e45"}]'>Lyre&rsquo;s Non-Alcoholic Spirits</button>
+    <button class="client-tag" data-videos='[{"label":"Wear a Mask. Properly.","url":"https://player.vimeo.com/video/418322761"}]'>New York State</button>
   </div>
 </section>
 
 <!-- FOOTER -->
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-wrap">
+    <button class="lightbox-close" id="lightbox-close">Close &times;</button>
+    <div class="lightbox-frame">
+      <iframe id="lightbox-iframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="lightbox-playlist" id="lightbox-playlist"></div>
+    <a href="pudding.html" class="lightbox-pudding-btn">Eat the Pudding</a>
+  </div>
+</div>
+
 <footer>
   <img class="footer-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money" />
   <p class="footer-copy">&copy; 2025 Beer Money</p>
@@ -623,7 +674,6 @@
 <script>
   const nav = document.querySelector('nav');
   const logo = document.querySelector('.nav-logo');
-
   let lastScrollY = window.scrollY;
   let scrollDelta = 0;
   let scrollTimer = null;
@@ -632,18 +682,12 @@
 
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
-
-    // Accumulate scroll delta
     const dy = window.scrollY - lastScrollY;
     lastScrollY = window.scrollY;
     scrollDelta += dy;
-
-    // Tilt cup in scroll direction, eased
-    const targetTilt = Math.max(-2.5, Math.min(2.5, scrollDelta * 0.15));
-    currentTilt += (targetTilt - currentTilt) * 0.3;
+    const targetTilt = Math.max(-5, Math.min(5, scrollDelta * 0.25));
+    currentTilt += (targetTilt - currentTilt) * 0.45;
     logo.style.transform = 'rotate(' + currentTilt.toFixed(2) + 'deg)';
-
-    // When scrolling stops, trigger the settle wobble
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(() => {
       startSettleWobble(currentTilt);
@@ -656,12 +700,10 @@
     if (wobbleRAF) cancelAnimationFrame(wobbleRAF);
     let angle = startAngle;
     let vel = 0;
-
     function tick() {
-      vel -= angle * 0.35;   // stiff spring — fast oscillation
-      vel *= 0.78;           // damping — dies out over 3-4 bounces
+      vel -= angle * 0.22;
+      vel *= 0.65;
       angle += vel;
-
       if (Math.abs(angle) > 0.1 || Math.abs(vel) > 0.1) {
         logo.style.transform = 'rotate(' + angle.toFixed(1) + 'deg)';
         wobbleRAF = requestAnimationFrame(tick);
@@ -672,6 +714,53 @@
     }
     wobbleRAF = requestAnimationFrame(tick);
   }
+
+  // LIGHTBOX
+  const lightbox = document.getElementById('lightbox');
+  const lightboxIframe = document.getElementById('lightbox-iframe');
+  const lightboxPlaylist = document.getElementById('lightbox-playlist');
+
+  function embedUrl(url) {
+    return url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+  }
+
+  function openLightbox(videos) {
+    lightboxPlaylist.innerHTML = '';
+    if (videos.length > 1) {
+      const label = document.createElement('p');
+      label.textContent = 'Click for more:';
+      label.style.cssText = 'font-family:inherit;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cream);width:100%;text-align:center;margin-bottom:8px;opacity:0.7;';
+      lightboxPlaylist.appendChild(label);
+      videos.forEach((v, i) => {
+        const pill = document.createElement('button');
+        pill.className = 'lightbox-pill' + (i === 0 ? ' active' : '');
+        pill.textContent = v.label;
+        pill.addEventListener('click', e => {
+          e.stopPropagation();
+          lightboxIframe.src = embedUrl(v.url);
+          lightboxPlaylist.querySelectorAll('.lightbox-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+        });
+        lightboxPlaylist.appendChild(pill);
+      });
+    }
+    lightboxIframe.src = embedUrl(videos[0].url);
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxIframe.src = '';
+    lightboxPlaylist.innerHTML = '';
+  }
+
+  document.querySelectorAll('.client-tag[data-videos]').forEach(btn => {
+    btn.addEventListener('click', () => openLightbox(JSON.parse(btn.dataset.videos)));
+  });
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
