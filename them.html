@@ -3,11 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Them — Beer Money</title>
-<meta property="og:image" content="cropped-beermoneylogo-1.png">
-<meta property="og:title" content="Them — Beer Money">
-<meta property="og:description" content="About the competition. We make your audience laugh.">
-<link rel="icon" type="image/png" href="cropped-beermoneylogo-1.png">
+<title>Them — Comedy Agency vs Traditional Ad Agency</title>
+<meta name="description" content="Why brands pick Beer Money over a traditional ad agency. Less strategy theater, more funny.">
+<link rel="canonical" href="https://summonbeermoney.com/them.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beer Money">
+<meta property="og:url" content="https://summonbeermoney.com/them.html">
+<meta property="og:title" content="Them — Comedy Agency vs Traditional Ad Agency">
+<meta property="og:description" content="Why brands pick Beer Money over a traditional ad agency. Less strategy theater, more funny.">
+<meta property="og:image" content="https://summonbeermoney.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Them — Comedy Agency vs Traditional Ad Agency">
+<meta name="twitter:description" content="Why brands pick Beer Money over a traditional ad agency. Less strategy theater, more funny.">
+<meta name="twitter:image" content="https://summonbeermoney.com/images/logo.png">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preload" as="image" href="images/logo.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,8 +31,10 @@
   nav > a { display: block; line-height: 0; }
   .nav-logo { height: 120px; width: auto; display: block; margin: -36px 0 -44px -20px; position: relative; z-index: 1; transform-origin: center bottom; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-  .nav-links a { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s, font-size 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); font-size: 16.8px; text-shadow: 0 2px 6px rgba(28,26,20,0.18); }
+  .nav-links a { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--black); text-decoration: none; display: inline-block; transition: color 0.2s, transform 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); transform: scale(1.05); text-shadow: 0 2px 6px rgba(28,26,20,0.18); }
+  .nav-links a:focus-visible, .footer-contact a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; } }
 
   /* ── PENNANT BANNER ── */
   .pennant { position: absolute; top: -15px; left: 0; right: 0; height: 120px; z-index: 0; pointer-events: none; }
@@ -119,7 +131,7 @@
 <body>
 
 <nav>
-  <a href="index.html"><img class="nav-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money"></a>
+  <a href="index.html"><img class="nav-logo" src="images/logo.png" alt="Beer Money"></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="us.html">Us</a></li>
@@ -236,8 +248,8 @@
 </section>
 
 <footer>
-  <img class="footer-logo" src="cropped-beermoneylogo-1.png" alt="Beer Money">
-  <p class="footer-copy">&copy; 2025 Beer Money</p>
+  <img class="footer-logo" src="images/logo.png" alt="Beer Money">
+  <p class="footer-copy">&copy; 2026 Beer Money</p>
   <div class="footer-contact"><a href="mailto:matt@summonbeermoney.com">matt@summonbeermoney.com</a></div>
 </footer>
 
