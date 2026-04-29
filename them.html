@@ -41,15 +41,20 @@
   .pennant svg { width: 100%; height: 100%; display: block; }
 
   /* PAGE HEADER — black bg for attitude */
-  .page-header { padding: 120px 48px 80px; background: var(--black); color: var(--cream); border-bottom: 3px solid var(--red); }
+  .page-header { padding: 120px 48px 20px; background: var(--black); color: var(--cream); border-bottom: 3px solid var(--red); }
   .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
   .page-title { font-size: clamp(72px, 12vw, 140px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
   .page-title em { font-style: normal; color: var(--red); }
   .page-sub { margin-top: 28px; font-size: 18px; font-weight: 300; letter-spacing: 1px; color: rgba(245,240,232,0.6); max-width: 600px; line-height: 1.6; }
   .page-punchline { margin-top: 36px; font-size: clamp(28px, 4vw, 52px); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; line-height: 1.05; color: var(--cream); }
+  .recent-strip { margin-top: 12px; padding-top: 15px; border-top: 1px solid rgba(245,240,232,0.12); font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--smoke); text-align: center; }
+  .recent-strip a { color: var(--cream); text-decoration: none; transition: color 0.2s; }
+  .recent-strip a:hover { color: var(--gold); }
+  .recent-strip .recent-more { color: var(--gold); }
+  .recent-strip .recent-more:hover { color: var(--cream); }
 
   /* COMPARE TABLE */
-  .compare-section { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+  .compare-section { padding: 40px 48px; max-width: 1100px; margin: 0 auto; }
   .section-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
   .section-title { font-size: clamp(32px, 4vw, 52px); font-weight: 600; text-transform: uppercase; letter-spacing: -0.5px; line-height: 1; margin-bottom: 48px; }
 
@@ -70,13 +75,13 @@
   .cross { color: var(--smoke); margin-right: 8px; }
 
   /* VERDICT BAND */
-  .verdict { background: var(--red); color: var(--cream); padding: 80px 48px; text-align: center; }
+  .verdict { background: var(--red); color: var(--cream); padding: 40px 48px; text-align: center; }
   .verdict-quote { font-size: clamp(22px, 3.5vw, 42px); font-weight: 300; line-height: 1.4; max-width: 820px; margin: 0 auto 36px; letter-spacing: 0.5px; }
   .verdict-quote strong { font-weight: 600; }
   .verdict-attribution { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; opacity: 0.7; }
 
   /* REASONS */
-  .reasons { padding: 80px 48px 100px; max-width: 1100px; margin: 0 auto; }
+  .reasons { padding: 40px 48px 50px; max-width: 1100px; margin: 0 auto; }
   .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid rgba(28,26,20,0.15); }
   .reason { padding: 40px 32px; border-right: 1px solid rgba(28,26,20,0.15); border-bottom: 1px solid rgba(28,26,20,0.15); }
   .reason:last-child { border-right: none; }
@@ -85,13 +90,13 @@
   .reason-body { font-size: 14px; font-weight: 300; color: var(--smoke); line-height: 1.6; letter-spacing: 0.3px; }
 
   /* CTA */
-  .cta-band { background: var(--black); padding: 80px 48px; text-align: center; }
+  .cta-band { background: var(--black); padding: 40px 48px; text-align: center; }
   .cta-text { font-size: clamp(24px, 3vw, 38px); font-weight: 300; color: var(--cream); letter-spacing: 1px; margin-bottom: 36px; }
   .cta-text strong { font-weight: 600; color: var(--gold); }
   .btn { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; padding: 14px 36px; border: 1.5px solid var(--gold); color: var(--gold); background: transparent; transition: background 0.2s, color 0.2s; }
   .btn:hover { background: var(--gold); color: var(--black); }
 
-  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   .footer-logo { height: 90px; opacity: 0.7; }
   .footer-copy { font-size: 11px; letter-spacing: 2px; color: rgba(245,240,232,0.35); text-transform: uppercase; }
   .footer-contact a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
@@ -114,17 +119,17 @@
     .page-title { font-size: 56px; }
     .page-punchline { font-size: 24px; }
     .page-punchline span { font-size: 1.15em !important; }
-    .compare-section { padding: 24px 20px; }
+    .compare-section { padding: 12px 20px; }
     .section-title { font-size: 28px; }
     .compare-table td { padding: 14px 12px; font-size: 13px; }
     .compare-table td:first-child { font-size: 11px; width: 35%; }
-    .verdict { padding: 32px 20px; }
+    .verdict { padding: 16px 20px; }
     .verdict-quote { font-size: 20px; }
-    .reasons { padding: 24px 20px; }
+    .reasons { padding: 12px 20px; }
     .reasons-grid { grid-template-columns: 1fr; }
     .reason { border-right: none; padding: 24px 20px; }
-    .cta-band { padding: 32px 20px; }
-    footer { padding: 24px 20px 80px; }
+    .cta-band { padding: 16px 20px; }
+    footer { padding: 12px 20px 80px; }
   }
 </style>
 </head>
@@ -149,8 +154,10 @@
 
 <header class="page-header">
   <h1 class="page-title">About<br><em>them.</em></h1>
-  <p class="page-sub">Big agencies use the same creative teams writing pharma and beauty ads to try to be funny. Production companies woo you with their directors who have no comedic timing. Then they cast capital A &ldquo;<em>Actors</em>&rdquo; to pretend to be funny. And don&rsquo;t even get us started on comedy editing&hellip;</p>
-  <p class="page-punchline"><span style="color:var(--gold); font-size:1.25em; display:block; line-height:1;">We make your audience laugh.</span>From the first brief to the final cut.</p>
+  <p class="page-sub"><em>Those</em> agencies hand your funny brief to the same writers who just finished a melodramatic ED spot. Then production companies pitch you directors whose reels are 93% car commercials and one lifeless Super Bowl ad starring a now-canceled celebrity. THEN everyone agrees the script &ldquo;sure could use more humor,&rdquo; which is impossible when no one in the room is funny.</p>
+  <p class="page-punchline"><span style="color:var(--gold); font-size:1.25em; display:block; line-height:1;">So we built an agency</span>where everyone in the room is funny.</p>
+  <p class="page-sub" style="margin-top:20px; font-size:13px;"><em>(You wouldn&rsquo;t get brain surgery from the fake doctor in that ED commercial, would you!?)</em></p>
+  <p class="recent-strip">Recent: <a href="pudding.html">Busch Light</a> &middot; <a href="pudding.html">BarkBox</a> &middot; <a href="pudding.html">Star Wars</a> &middot; <a href="pudding.html">Comedy Central</a> &middot; <a href="pudding.html" class="recent-more">MORE IN THE PUDDING &rarr;</a></p>
 </header>
 
 <section class="compare-section">
@@ -169,42 +176,42 @@
       <tr>
         <td>Comedy instinct</td>
         <td><span class="cross">&mdash;</span> Hired in after the strategy is set, if at all</td>
-        <td><span class="check">&#9670;</span> Comedians run every room, every stage</td>
+        <td><span class="check">&#9670;</span> The instinct is the strategy. There is no separate room.</td>
       </tr>
       <tr>
         <td>Who writes</td>
         <td><span class="cross">&mdash;</span> Junior copywriters with a funny brief</td>
-        <td><span class="check">&#9670;</span> Working writers and performers with real credits</td>
+        <td><span class="check">&#9670;</span> Writers whose other job is making a live audience laugh on a Tuesday.</td>
       </tr>
       <tr>
         <td>Strategy</td>
         <td><span class="cross">&mdash;</span> Separate strategy team, comedy is execution only</td>
-        <td><span class="check">&#9670;</span> Comedy-first strategy baked in from the start</td>
+        <td><span class="check">&#9670;</span> The strategy deck is six pages because we&rsquo;d rather be writing jokes.</td>
       </tr>
       <tr>
         <td>Production</td>
         <td><span class="cross">&mdash;</span> Bid out to a separate company after creative</td>
-        <td><span class="check">&#9670;</span> End-to-end — script, shoot, deliver</td>
+        <td><span class="check">&#9670;</span> The same people who wrote the joke are on set protecting it.</td>
       </tr>
       <tr>
         <td>Speed</td>
         <td><span class="cross">&mdash;</span> Weeks of briefs, decks, revisions before a frame is shot</td>
-        <td><span class="check">&#9670;</span> We move fast because we own the whole process</td>
+        <td><span class="check">&#9670;</span> We don&rsquo;t schedule a kickoff to schedule the kickoff.</td>
       </tr>
       <tr>
         <td>Geography</td>
         <td><span class="cross">&mdash;</span> One coast, one talent pool</td>
-        <td><span class="check">&#9670;</span> NYC &amp; LA — access to both major comedy markets</td>
+        <td><span class="check">&#9670;</span> NYC and LA. The two cities where being unfunny is a career-ender.</td>
       </tr>
       <tr>
         <td>Accountability</td>
         <td><span class="cross">&mdash;</span> Multiple handoffs, diffused ownership</td>
-        <td><span class="check">&#9670;</span> One call, one team, one result</td>
+        <td><span class="check">&#9670;</span> If it&rsquo;s not funny, you have one number to call and yell into.</td>
       </tr>
       <tr>
         <td>Track record</td>
         <td><span class="cross">&mdash;</span> General production with some comedy credits</td>
-        <td><span class="check">&#9670;</span> Busch Light, BarkBox, Star Wars, Comedy Central, and a series that hit a million followers in six months</td>
+        <td><span class="check">&#9670;</span> Busch Light. BarkBox. Star Wars. Comedy Central. A series that hit a million followers in six months. Ask the next guy what his last six months looked like.</td>
       </tr>
     </tbody>
   </table>
@@ -243,7 +250,7 @@
 </section>
 
 <section class="cta-band">
-  <p class="cta-text">Ready to work with <strong>the right team</strong>?</p>
+  <p class="cta-text">Don&rsquo;t take our word for it. <strong>We took theirs.</strong></p>
   <a href="summon.html" class="btn">Summon Us</a>
 </section>
 
