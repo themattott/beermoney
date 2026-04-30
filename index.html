@@ -316,7 +316,7 @@
 
   /* ── CLIENTS STRIP ── */
   .clients {
-    padding: 64px 48px;
+    padding: 32px 48px;
     text-align: center;
     border-bottom: 1px solid rgba(28,26,20,0.12);
   }
@@ -529,7 +529,7 @@
   footer {
     background: var(--black);
     border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 40px 48px;
+    padding: 20px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -559,6 +559,13 @@
 
   .footer-contact a:hover { color: var(--cream); }
 
+  /* ── CTA BAND ── */
+  .cta-band { background: var(--black); padding: 40px 48px; text-align: center; }
+  .cta-text { font-size: clamp(24px, 3vw, 38px); font-weight: 300; color: var(--cream); letter-spacing: 1px; margin-bottom: 36px; }
+  .cta-text strong { font-weight: 600; color: var(--gold); }
+  .btn-gold { display: inline-block; font-size: 18px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; padding: 11px 30px; border: 1.5px solid var(--gold); color: var(--gold); background: transparent; transition: background 0.2s, color 0.2s; }
+  .btn-gold:hover { background: var(--gold); color: var(--black); }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -581,10 +588,11 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
     .hero { padding: 100px 24px 60px; }
-    .clients { padding: 48px 24px; }
+    .clients { padding: 24px 24px; }
     .services { padding: 64px 24px; }
     .about-band { padding: 64px 24px; }
-    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .cta-band { padding: 32px 24px; }
+    footer { padding: 16px 24px; flex-direction: column; text-align: center; }
     .nav-links { gap: 24px; }
     .services-grid { grid-template-columns: 1fr 1fr; }
     .service-item:nth-child(even) { border-right: none; }
@@ -612,8 +620,11 @@
     .hero-sub { font-size: 48px; }
     .hero-divider { margin: 8px 0; }
     .about-band { padding: 40px 20px; }
+    .cta-band { padding: 24px 20px; }
+    .btn-gold { font-size: 16px; }
+    .footer-logo { height: 70px; }
     .strategy-block { font-size: 22px; }
-    .clients { padding: 16px 20px; }
+    .clients { padding: 8px 20px; }
     .clients-label { font-size: 9px; margin-bottom: 18px; }
     .clients-grid { gap: 6px 16px; }
     .client-tag { font-size: 11px; }
@@ -689,6 +700,12 @@
     <button class="client-tag" data-videos='[{"label":"Body Double","url":"https://player.vimeo.com/video/1005685556?h=ea2ae0ee9a"},{"label":"Yoga","url":"https://player.vimeo.com/video/1073688146?h=7464ff44a3"},{"label":"Fitness","url":"https://player.vimeo.com/video/1073688023?h=e19bf07683"},{"label":"Girl\u2019s Night","url":"https://player.vimeo.com/video/1073687940?h=c232a9ac49"},{"label":"Bedtime","url":"https://player.vimeo.com/video/1073687720?h=c95f9b1542"},{"label":"Morning","url":"https://player.vimeo.com/video/1073687805?h=5d1ef052b1"},{"label":"Bath","url":"https://player.vimeo.com/video/1073687889?h=04885f3daf"},{"label":"Launch Promo","url":"https://player.vimeo.com/video/1073688254?h=a3c7261e45"}]'>Lyre&rsquo;s Non-Alcoholic Spirits</button>
     <button class="client-tag" data-videos='[{"label":"Wear a Mask. Properly.","url":"https://player.vimeo.com/video/418322761"}]'>New York State</button>
   </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <p class="cta-text">Like what you see? <strong>Let&rsquo;s make something.</strong></p>
+  <a href="summon.html" class="btn-gold">Summon Us</a>
 </section>
 
 <!-- FOOTER -->
