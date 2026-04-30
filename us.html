@@ -62,27 +62,39 @@
   .nav-links a:focus-visible, .footer-contact a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; } }
 
-  /* ── PENNANT BANNER ── */
+  /* PENNANT */
   .pennant { position: absolute; top: -15px; left: 0; right: 0; height: 120px; z-index: 0; pointer-events: none; }
   .pennant svg { width: 100%; height: 100%; display: block; }
 
-  /* PAGE HEADER */
-  .page-header { padding: 120px 48px 40px; border-bottom: 1px solid rgba(28,26,20,0.12); }
-  .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
-  .page-title { font-size: clamp(72px, 12vw, 140px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; color: var(--black); }
+  /* PAGE HEADER — black bg, matches them.html attitude */
+  .page-header { padding: 120px 48px 20px; background: var(--black); color: var(--cream); border-bottom: 3px solid var(--red); }
+  .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .page-title { font-size: clamp(72px, 12vw, 140px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
   .page-title em { font-style: normal; color: var(--gold); }
-  .page-sub { margin-top: 28px; font-size: 18px; font-weight: 300; letter-spacing: 1px; color: var(--smoke); max-width: 560px; line-height: 1.6; }
+  .page-sub { margin-top: 28px; font-size: 18px; font-weight: 300; letter-spacing: 1px; color: rgba(245,240,232,0.6); max-width: 640px; line-height: 1.6; }
+  .page-punchline { margin-top: 36px; font-size: clamp(28px, 4vw, 52px); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; line-height: 1.05; color: var(--cream); }
+  .page-punchline span { color: var(--gold); display: block; line-height: 1; }
+  .recent-strip { margin-top: 36px; padding-top: 15px; border-top: 1px solid rgba(245,240,232,0.12); font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--smoke); text-align: center; }
+  .recent-strip a { color: var(--cream); text-decoration: none; transition: color 0.2s; }
+  .recent-strip a:hover { color: var(--gold); }
+  .recent-strip .recent-more { color: var(--gold); }
+  .recent-strip .recent-more:hover { color: var(--cream); }
 
-  /* TEAM GRID */
-  .team { padding: 40px 48px 100px; }
+  /* TEAM */
+  .team { padding: 40px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+  .section-title { font-size: clamp(32px, 4vw, 52px); font-weight: 600; text-transform: uppercase; letter-spacing: -0.5px; line-height: 1; margin-bottom: 48px; }
+
   .team-grid { display: grid; grid-template-columns: 1fr; gap: 2px; }
 
-  .member { background: var(--cream); border: 1px solid rgba(28,26,20,0.12); padding: 48px 40px 52px; position: relative; overflow: hidden; transition: background 0.3s; }
+  .member { background: var(--cream); border: 1px solid rgba(28,26,20,0.12); padding: 40px 36px 44px; position: relative; overflow: hidden; transition: background 0.3s; }
   .member::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
   .member:hover { background: var(--black); }
   .member:hover::before { transform: scaleX(1); }
   .member:hover .member-name,
-  .member:hover .member-bio { color: var(--cream); }
+  .member:hover .member-bio,
+  .member:hover .member-job-text { color: var(--cream); }
+  .member:hover .member-job { border-color: rgba(245,240,232,0.18); }
 
   .member-inner { display: flex; gap: 32px; align-items: flex-start; }
   .member-headshot { flex: 0 0 140px; width: 140px; aspect-ratio: 2/3; background: rgba(28,26,20,0.06); border: 2px solid var(--black); transition: border-color 0.3s; }
@@ -90,21 +102,47 @@
   .member-content { flex: 1; }
 
   .member-name { font-size: 48px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); margin-bottom: 6px; line-height: 1; transition: color 0.3s; }
-  .member-meta { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; transition: color 0.3s; }
-  .member:hover .member-meta { color: rgba(212,144,10,0.8); }
-  .member-bio { font-size: 15px; font-weight: 300; letter-spacing: 0.3px; color: var(--smoke); line-height: 1.7; transition: color 0.3s; }
+  .member-meta { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; transition: color 0.3s; }
+  .member:hover .member-meta { color: rgba(212,144,10,0.85); }
+  .member-bio { font-size: 15px; font-weight: 300; letter-spacing: 0.3px; color: var(--smoke); line-height: 1.7; transition: color 0.3s; margin-bottom: 18px; }
+  .member-bio em { font-style: italic; color: var(--black); transition: color 0.3s; }
+  .member:hover .member-bio em { color: var(--gold); }
+
+  .member-job { border-top: 1px solid rgba(28,26,20,0.12); padding-top: 14px; transition: border-color 0.3s; }
+  .member-job-label { font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .member-job-text { font-size: 14px; font-weight: 400; letter-spacing: 0.4px; color: var(--black); line-height: 1.5; transition: color 0.3s; }
+
+  /* HOW WE WORK */
+  .reasons { padding: 40px 48px 50px; max-width: 1100px; margin: 0 auto; }
+  .reasons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(28,26,20,0.15); }
+  .reason { padding: 40px 32px; border-right: 1px solid rgba(28,26,20,0.15); border-bottom: 1px solid rgba(28,26,20,0.15); }
+  .reason:last-child { border-right: none; }
+  .reason-num { font-size: 48px; font-weight: 600; color: rgba(28,26,20,0.06); line-height: 1; margin-bottom: 16px; }
+  .reason-title { font-size: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); margin-bottom: 10px; }
+  .reason-body { font-size: 14px; font-weight: 300; color: var(--smoke); line-height: 1.6; letter-spacing: 0.3px; }
+
+  /* VERDICT */
+  .verdict { background: var(--red); color: var(--cream); padding: 40px 48px; text-align: center; }
+  .verdict-quote { font-size: clamp(22px, 3.5vw, 42px); font-weight: 300; line-height: 1.4; max-width: 820px; margin: 0 auto 36px; letter-spacing: 0.5px; }
+  .verdict-quote strong { font-weight: 600; }
+  .verdict-attribution { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; opacity: 0.7; }
+
+  /* CTA */
+  .cta-band { background: var(--black); padding: 40px 48px; text-align: center; }
+  .cta-text { font-size: clamp(24px, 3vw, 38px); font-weight: 300; color: var(--cream); letter-spacing: 1px; margin-bottom: 36px; }
+  .cta-text strong { font-weight: 600; color: var(--gold); }
+  .btn { display: inline-block; font-size: 18px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; padding: 11px 30px; border: 1.5px solid var(--gold); color: var(--gold); background: transparent; transition: background 0.2s, color 0.2s; }
+  .btn:hover { background: var(--gold); color: var(--black); }
 
   /* FOOTER */
-  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   .footer-logo { height: 90px; opacity: 0.7; }
   .footer-copy { font-size: 11px; font-weight: 400; letter-spacing: 2px; color: rgba(245,240,232,0.35); text-transform: uppercase; }
   .footer-contact a { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
   .footer-contact a:hover { color: var(--cream); }
 
   @media (max-width: 640px) {
-    .page-header { padding: 100px 24px 48px; }
-    .team { padding: 48px 24px 64px; }
-    .team-grid { grid-template-columns: 1fr; }
+    .page-header, .team, .reasons, .verdict, .cta-band { padding-left: 24px; padding-right: 24px; }
     .nav-links { gap: 20px; }
     .member-inner { flex-direction: column; }
     .member-headshot { width: 100%; flex: none; aspect-ratio: 3/2; }
@@ -119,12 +157,20 @@
     .pennant { height: 55px; top: -5px; }
     .page-header { padding: 56px 20px 24px; }
     .page-title { font-size: 56px; }
-    .team { padding: 24px 20px 48px; }
+    .page-punchline { font-size: 24px; }
+    .team { padding: 28px 20px 24px; }
     .member { padding: 28px 20px 32px; }
     .member-name { font-size: 32px; }
     .member-headshot { flex: 0 0 100px; width: 100px; }
     .member-inner { gap: 20px; }
-    footer { padding: 24px 20px 80px; }
+    .section-title { font-size: 28px; }
+    .reasons { padding: 12px 20px; }
+    .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+    .reason { border-right: none; padding: 24px 20px; }
+    .verdict { padding: 16px 20px; }
+    .verdict-quote { font-size: 20px; }
+    .cta-band { padding: 16px 20px; }
+    footer { padding: 12px 20px 80px; }
   }
 </style>
 </head>
@@ -148,10 +194,16 @@
 </div>
 
 <header class="page-header">
-  <h1 class="page-title">We are<br><em>us.</em> <span style="font-size:0.22em; color:var(--smoke); letter-spacing:1px; font-weight:300; text-transform:none; font-family:'Barlow Condensed', sans-serif;">(duh)</span></h1>
+  <h1 class="page-title">We are<br><em>us.</em></h1>
+  <p class="page-sub">Three people who have spent most of their adult lives figuring out what makes a room laugh, what makes a room go quiet, and the difference between the two. Writers and directors who learned the agency side too, so the work gets made <em>and</em> it gets made well.</p>
+  <p class="page-punchline"><span>You&rsquo;re hiring the writers,</span>not handing off to them.</p>
+  <p class="recent-strip">Recent: <a href="pudding.html">Busch Light</a> &middot; <a href="pudding.html">BarkBox</a> &middot; <a href="pudding.html">Star Wars</a> &middot; <a href="pudding.html">Comedy Central</a> &middot; <a href="pudding.html" class="recent-more">MORE IN THE PUDDING &rarr;</a></p>
 </header>
 
 <section class="team">
+  <p class="section-label">The Roster</p>
+  <h2 class="section-title">Everyone in the room<br>is funny.</h2>
+
   <div class="team-grid">
 
     <div class="member">
@@ -160,7 +212,11 @@
         <div class="member-content">
           <h2 class="member-name">Matt Ott</h2>
           <p class="member-meta">Writer &bull; Director &bull; Editor &nbsp;&#9670;&nbsp; NYC</p>
-          <p class="member-bio">Matt produces live stand-up comedy and creates branded content campaigns for major clients. He built Beer Money to put real comedians in front of brands that want funny but don&rsquo;t know how to get there.</p>
+          <p class="member-bio">Award-winning commercial producer and a Nicholl Fellowship quarterfinalist screenwriter who also produces live stand-up in New York. Started Beer Money because he kept watching brands pay agencies to take the funny <em>out</em> of their scripts.</p>
+          <div class="member-job">
+            <p class="member-job-label">On your spot</p>
+            <p class="member-job-text">Writes it. Directs it. Cuts it. Stays on set protecting the joke (and the brand) from every well-meaning round of notes that quietly sand the edges off.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -171,7 +227,11 @@
         <div class="member-content">
           <h2 class="member-name">Kiel Kennedy</h2>
           <p class="member-meta">Actor &bull; Writer &bull; Director &nbsp;&#9670;&nbsp; LA</p>
-          <p class="member-bio">Kiel came up through The Groundlings and co-created <em>The Chit Show</em>, which grew to over a million followers in six months. He brings character, timing, and the kind of instincts you only get from years on stage.</p>
+          <p class="member-bio">Came up through The Groundlings, wrote for <em>Robot Chicken</em> on Adult Swim, and co-created <em>The Chit Show</em>, which crossed a million followers in six months. Knows what a joke is supposed to feel like before anyone has rolled a camera.</p>
+          <div class="member-job">
+            <p class="member-job-label">On your spot</p>
+            <p class="member-job-text">Writes it. Performs it, or directs whoever&rsquo;s performing it. Builds the character that makes the joke land instead of just sit there.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -182,12 +242,49 @@
         <div class="member-content">
           <h2 class="member-name">Gerry Keane</h2>
           <p class="member-meta">Account Management &bull; Fun Police &nbsp;&#9670;&nbsp; NYC</p>
-          <p class="member-bio">Every comedy troupe needs the grounded character who tries to rein in the clowns. Luckily Gerry&rsquo;s still slightly askew. His years of agency experience keep us (mostly) in check.</p>
+          <p class="member-bio">Every comedy troupe needs the grounded one trying to rein in the clowns. Gerry is that, but slightly askew himself. Years of agency experience that he uses for good.</p>
         </div>
       </div>
     </div>
 
   </div>
+</section>
+
+<section class="reasons">
+  <p class="section-label">How We Work</p>
+  <h2 class="section-title" style="margin-bottom:48px;">One room.<br>No telephone game.</h2>
+  <div class="reasons-grid">
+    <div class="reason">
+      <p class="reason-num">01</p>
+      <p class="reason-title">Write it</p>
+      <p class="reason-body">The script comes from the people who&rsquo;ll defend it on set. No briefs handed down to junior copy.</p>
+    </div>
+    <div class="reason">
+      <p class="reason-num">02</p>
+      <p class="reason-title">Direct it</p>
+      <p class="reason-body">The director was in the room when the joke was written. The take you want is the one that was always coming.</p>
+    </div>
+    <div class="reason">
+      <p class="reason-num">03</p>
+      <p class="reason-title">Cut it</p>
+      <p class="reason-body">Comedy lives or dies in the edit. The people who wrote and shot the joke are the ones finding the frame it lands on.</p>
+    </div>
+    <div class="reason">
+      <p class="reason-num">04</p>
+      <p class="reason-title">Defend it</p>
+      <p class="reason-body">When a note comes in that would flatten the spot, somebody at this number picks up and pushes back. Politely. Mostly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <p class="verdict-quote">Most agencies bring in a comedian at the end to punch up a script that was never funny to begin with. <strong>We start with funny.</strong></p>
+  <p class="verdict-attribution">Beer Money</p>
+</section>
+
+<section class="cta-band">
+  <p class="cta-text">Now you know who we are. <strong>Find out what we&rsquo;ll do for you.</strong></p>
+  <a href="summon.html" class="btn">Summon Us</a>
 </section>
 
 <footer>

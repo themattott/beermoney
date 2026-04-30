@@ -82,7 +82,7 @@
 
   /* REASONS */
   .reasons { padding: 40px 48px 50px; max-width: 1100px; margin: 0 auto; }
-  .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid rgba(28,26,20,0.15); }
+  .reasons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(28,26,20,0.15); }
   .reason { padding: 40px 32px; border-right: 1px solid rgba(28,26,20,0.15); border-bottom: 1px solid rgba(28,26,20,0.15); }
   .reason:last-child { border-right: none; }
   .reason-num { font-size: 48px; font-weight: 600; color: rgba(28,26,20,0.06); line-height: 1; margin-bottom: 16px; }
@@ -93,7 +93,7 @@
   .cta-band { background: var(--black); padding: 40px 48px; text-align: center; }
   .cta-text { font-size: clamp(24px, 3vw, 38px); font-weight: 300; color: var(--cream); letter-spacing: 1px; margin-bottom: 36px; }
   .cta-text strong { font-weight: 600; color: var(--gold); }
-  .btn { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; padding: 14px 36px; border: 1.5px solid var(--gold); color: var(--gold); background: transparent; transition: background 0.2s, color 0.2s; }
+  .btn { display: inline-block; font-size: 18px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; padding: 11px 30px; border: 1.5px solid var(--gold); color: var(--gold); background: transparent; transition: background 0.2s, color 0.2s; }
   .btn:hover { background: var(--gold); color: var(--black); }
 
   footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -126,7 +126,7 @@
     .verdict { padding: 16px 20px; }
     .verdict-quote { font-size: 20px; }
     .reasons { padding: 12px 20px; }
-    .reasons-grid { grid-template-columns: 1fr; }
+    .reasons-grid { grid-template-columns: repeat(2, 1fr); }
     .reason { border-right: none; padding: 24px 20px; }
     .cta-band { padding: 16px 20px; }
     footer { padding: 12px 20px 80px; }
@@ -243,7 +243,7 @@
     </div>
     <div class="reason">
       <p class="reason-num">04</p>
-      <p class="reason-title">We&rsquo;ve already done it</p>
+      <p class="reason-title">We&rsquo;ve done it</p>
       <p class="reason-body">The brands on our list aren&rsquo;t experiments. They trusted us with real budgets and real audiences, and we delivered.</p>
     </div>
   </div>
