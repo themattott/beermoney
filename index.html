@@ -454,7 +454,7 @@
   .about-band {
     background: var(--black);
     color: var(--cream);
-    padding: 60px 48px;
+    padding: 30px 48px 30px 48px;
     text-align: left;
   }
 
@@ -487,15 +487,15 @@
   }
 
   .strategy-reveal {
-    margin-top: 32px;
+    margin-top: 16px;
     text-align: center;
   }
 
   .strategy-funny {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: clamp(48px, 8vw, 96px);
-    font-weight: 300;
-    color: var(--cream);
+    font-weight: 600;
+    color: var(--gold);
     line-height: 1;
   }
 
@@ -511,7 +511,7 @@
   .closing-statement {
     max-width: 960px;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: 40px;
     border-top: 1px solid rgba(245,240,232,0.1);
   }
 
@@ -525,25 +525,55 @@
 
   .closing-line strong { font-weight: 700; }
 
+  /* ── FOOTER PENNANT ── */
+  .footer-pennant {
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+    display: block;
+    margin-top: 0;
+    background: var(--black);
+  }
+  .footer-pennant svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
   /* ── FOOTER ── */
   footer {
-    background: var(--black);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 20px 48px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .footer-gold-band {
+    display: none;
+  }
+
+  .footer-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
+    width: 100%;
+    padding: 0 48px 5px;
+    position: relative;
+    z-index: 1;
+    margin-top: -44px;
   }
 
-  .footer-logo { height: 90px; opacity: 0.7; }
+  .footer-logo { height: 90px; opacity: 1; }
 
   .footer-copy {
     font-size: 11px;
     font-weight: 400;
     letter-spacing: 2px;
-    color: rgba(245,240,232,0.35);
+    color: rgba(28,26,20,0.6);
     text-transform: uppercase;
   }
 
@@ -552,12 +582,12 @@
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--black);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .footer-contact a:hover { color: var(--cream); }
+  .footer-contact a:hover { color: var(--gold); }
 
   /* ── CTA BAND ── */
   .cta-band { background: var(--black); padding: 40px 48px; text-align: center; }
@@ -722,11 +752,19 @@
 </div>
 
 <footer>
-  <img class="footer-logo" src="images/logo.png" alt="Beer Money" />
-  <p class="footer-copy">&copy; 2026 Beer Money</p>
-  <div class="footer-contact">
-    <a href="mailto:matt@summonbeermoney.com">matt@summonbeermoney.com</a>
+  <div class="footer-pennant">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,60 1440,60 1440,20 720,0 0,20" fill="var(--gold)"/>
+    </svg>
   </div>
+  <div class="footer-content">
+    <img class="footer-logo" src="images/logo.png" alt="Beer Money" />
+    <p class="footer-copy">&copy; 2026 Beer Money</p>
+    <div class="footer-contact">
+      <a href="mailto:matt@summonbeermoney.com">matt@summonbeermoney.com</a>
+    </div>
+  </div>
+  <div class="footer-gold-band"></div>
 </footer>
 
 <script>
