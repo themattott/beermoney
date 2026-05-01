@@ -20,6 +20,10 @@
 <link rel="preload" as="image" href="images/logo.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://player.vimeo.com">
+<link rel="preconnect" href="https://i.vimeocdn.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -857,7 +861,18 @@
   }
 
   document.querySelectorAll('.client-tag[data-videos]').forEach(btn => {
-    btn.addEventListener('click', () => openLightbox(JSON.parse(btn.dataset.videos)));
+    const videos = JSON.parse(btn.dataset.videos);
+    let preloaded = false;
+    btn.addEventListener('mouseenter', () => {
+      if (preloaded) return;
+      preloaded = true;
+      const pre = document.createElement('iframe');
+      pre.src = embedUrl(videos[0].url);
+      pre.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
+      pre.allow = 'autoplay; fullscreen';
+      document.body.appendChild(pre);
+    });
+    btn.addEventListener('click', () => openLightbox(videos));
   });
 
   const scrollArrow = document.querySelector('.scroll-arrow');

@@ -20,6 +20,10 @@
 <link rel="preload" as="image" href="images/logo.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://player.vimeo.com">
+<link rel="preconnect" href="https://i.vimeocdn.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -464,7 +468,7 @@
 <footer>
   <div class="footer-pennant">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,60 1440,60 1440,20 720,0 0,20" fill="var(--gold)"/>
+      <polygon points="0,62 1440,62 1440,20 720,0 0,20" fill="var(--gold)"/>
     </svg>
   </div>
   <div class="footer-content">
@@ -528,6 +532,17 @@
       if (overlay) overlay.style.display = 'none';
       return;
     }
+    // Preload iframe on hover so it's already loading by click time
+    let preloaded = false;
+    item.addEventListener('mouseenter', () => {
+      if (preloaded) return;
+      preloaded = true;
+      const pre = document.createElement('iframe');
+      pre.src = embedUrl(videos[0].url);
+      pre.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
+      pre.allow = 'autoplay; fullscreen';
+      document.body.appendChild(pre);
+    });
     item.addEventListener('click', () => openLightbox(videos));
   });
 
