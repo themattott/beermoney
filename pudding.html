@@ -162,8 +162,9 @@
   .pennant { position: absolute; top: -15px; left: 0; right: 0; height: 120px; z-index: 0; pointer-events: none; }
   .pennant svg { width: 100%; height: 100%; display: block; }
 
-  .page-header { padding: 120px 48px 24px; border-bottom: 1px solid rgba(28,26,20,0.12); }
-  .page-title-aside { display: block; font-size: 0.13em; font-weight: 300; letter-spacing: 1px; text-transform: none; color: var(--smoke); font-family: 'Barlow Condensed', sans-serif; margin-top: 4px; padding-left: 34px; }
+  .page-header { padding: 120px 48px 10px; border-bottom: 1px solid rgba(28,26,20,0.12); background: var(--black); }
+  .the-text { color: var(--cream); }
+  .page-title-aside { display: block; font-size: 0.13em; font-weight: 300; letter-spacing: 1px; text-transform: none; color: var(--smoke); font-family: 'Barlow Condensed', sans-serif; margin-top: 2px; padding-left: 34px; font-style: italic; }
   .page-label { font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
   .page-title { font-size: clamp(72px, 12vw, 140px); font-weight: 600; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
   .page-title em { font-style: normal; color: var(--gold); }
@@ -179,7 +180,7 @@
   .capabilities-list li:not(:last-child)::after { content: '\25C6'; color: var(--gold); margin: 0 16px; font-size: 8px; vertical-align: middle; }
 
   /* WORK GRID */
-  .work { padding: 40px 48px; }
+  .work { padding: 20px 24px; background: var(--gold); }
   .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 
   .work-item { position: relative; background: var(--black); overflow: hidden; aspect-ratio: 16/9; cursor: pointer; }
@@ -203,17 +204,17 @@
   .work-item-overlay-text { font-size: 20px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--cream); background: var(--gold); padding: 6px; border-radius: 6px; margin: 0; display: inline-block; box-shadow: 0 6px 16px rgba(0,0,0,0.5); }
 
   /* accent line on left edge */
-  .work-item::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--gold); z-index: 2; }
+  .work-item::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: #6B5344; z-index: 2; }
   .work-item.red-accent::before { background: var(--red); }
   .work-item.featured::before { width: 4px; }
 
   /* STAT BAND */
-  .stat-band { background: var(--black); padding: 36px 48px; }
+  .stat-band { background: var(--cream); padding: 9px 12px; }
   .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 900px; margin: 0 auto; }
-  .stat { padding: 32px; text-align: center; border-right: 1px solid rgba(245,240,232,0.1); display: flex; flex-direction: column; }
+  .stat { padding: 32px; text-align: center; border-right: 1px solid rgba(28,26,20,0.12); display: flex; flex-direction: column; }
   .stat:last-child { border-right: none; }
   .stat-num { font-size: clamp(40px, 6vw, 64px); font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 16px; min-height: clamp(40px, 6vw, 64px); display: flex; align-items: flex-end; justify-content: center; }
-  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,240,232,0.45); }
+  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--smoke); }
 
   /* PLACEHOLDER NOTE */
   .placeholder-note { background: rgba(212,144,10,0.08); border: 1px dashed var(--gold); margin: 0 48px 48px; padding: 20px 28px; }
@@ -316,8 +317,7 @@
 </div>
 
 <header class="page-header">
-  <h1 class="page-title">The<br><em>pudding.<span class="page-title-aside">(you know, where the proof is)</span></em></h1>
-  <p class="recent-strip">You don&rsquo;t explain a joke. <span class="recent-more">Well, we don&rsquo;t explain the work.</span></p>
+  <h1 class="page-title"><span class="the-text">The</span><br><em>pudding.<span class="page-title-aside">(where the proof is)</span></em></h1>
 </header>
 
 <section class="capabilities">
@@ -330,7 +330,7 @@
     <li>Producing</li>
     <li>Directing</li>
     <li>Comedy editing</li>
-    <li>Brand voice copy</li>
+    <li>PR and Social Campaigns</li>
   </ul>
 </section>
 
@@ -532,17 +532,6 @@
       if (overlay) overlay.style.display = 'none';
       return;
     }
-    // Preload iframe on hover so it's already loading by click time
-    let preloaded = false;
-    item.addEventListener('mouseenter', () => {
-      if (preloaded) return;
-      preloaded = true;
-      const pre = document.createElement('iframe');
-      pre.src = embedUrl(videos[0].url);
-      pre.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
-      pre.allow = 'autoplay; fullscreen';
-      document.body.appendChild(pre);
-    });
     item.addEventListener('click', () => openLightbox(videos));
   });
 
