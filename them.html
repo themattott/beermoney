@@ -21,6 +21,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Them — Comedy Agency vs Traditional Ad Agency",
+  "url": "https://summonbeermoney.com/them.html",
+  "description": "Why brands pick Beer Money over a traditional ad agency. Less strategy theater, more funny.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Beer Money",
+    "url": "https://summonbeermoney.com/",
+    "email": "matt@summonbeermoney.com"
+  }
+}
+</script>
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root { --cream:#F5F0E8; --red:#C0392B; --gold:#D4900A; --black:#1C1A14; --smoke:#8a7f6e; }
@@ -124,11 +139,15 @@
     .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
     .pennant { height: 55px; top: -5px; }
     .page-header { padding: 56px 20px 24px; }
+    .page-header > .page-sub:first-of-type { text-align: justify; }
     .page-title { font-size: 56px; }
-    .page-punchline { font-size: 24px; }
+    .page-punchline { font-size: 24px; white-space: nowrap; }
     .page-punchline span { font-size: 1.15em !important; }
+    .page-header > .page-sub:last-of-type { font-size: 11px !important; }
     .compare-section { padding: 12px 20px; }
-    .section-title { font-size: 28px; }
+    .compare-section > .section-label { display: none; }
+    .section-title { font-size: 28px; margin-bottom: 12px !important; }
+    .reasons > .section-label { display: none; }
     .compare-table td { padding: 14px 12px; font-size: 13px; }
     .compare-table td:first-child { font-size: 11px; width: 35%; }
     .verdict { padding: 16px 20px; }
@@ -137,9 +156,13 @@
     .reasons-grid { grid-template-columns: repeat(2, 1fr); }
     .reason { border-right: none; padding: 24px 20px; }
     .cta-band { padding: 16px 20px; }
+    .cta-text { margin-bottom: 14px; }
     .footer-logo { height: 70px; }
-    footer { padding: 0 0 80px; }
-    .footer-content { padding: 0 20px 5px; }
+    footer { padding: 0 0 80px; gap: 8px; }
+    .footer-content { padding: 0 20px 5px; flex-direction: column; gap: 2px; }
+    .footer-contact { order: -1; width: 100%; text-align: center; }
+    .footer-logo { display: none; }
+    .footer-copy { align-self: center; }
   }
 </style>
 </head>
@@ -216,7 +239,7 @@
       <tr>
         <td>Speed</td>
         <td><span class="cross">&mdash;</span> Weeks of briefs, decks, revisions before a frame is shot</td>
-        <td><span class="check">&#9670;</span> We don&rsquo;t schedule a kickoff to schedule the kickoff. There's a 97% chance we show up with jokes on hand.</td>
+        <td><span class="check">&#9670;</span> We don&rsquo;t schedule a kickoff to schedule the kickoff. There&rsquo;s a 97% chance we show up with jokes on hand.</td>
       </tr>
       <tr>
         <td>Geography</td>

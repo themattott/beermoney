@@ -646,13 +646,14 @@
     .nav-links a { font-size: 14px; letter-spacing: 0.5px; }
     .hero-logo { display: block; height: 105px; width: auto; margin: -19px auto 0; }
     .pennant { height: 55px; top: -5px; }
-    .hero { padding: 41px 20px 16px; min-height: auto; }
+    .hero { padding: 41px 20px 8px; min-height: auto; }
     .scroll-arrow { margin-top: 4px; font-size: 18px; }
     .hero-headline { font-size: 52px; }
     .hero-sub { font-size: 48px; }
     .hero-divider { margin: 8px 0; }
-    .about-band { padding: 40px 20px; }
+    .about-band { padding: 20px 20px; }
     .cta-band { padding: 24px 20px; }
+    .cta-text { margin-bottom: 14px; }
     .btn-gold { font-size: 16px; }
     .footer-logo { height: 70px; }
     .strategy-block { font-size: 22px; }
@@ -661,7 +662,10 @@
     .clients-grid { gap: 6px 16px; }
     .client-tag { font-size: 11px; }
     footer { padding: 0 0 80px; gap: 8px; }
-    .footer-content { padding: 0 20px 5px; }
+    .footer-content { padding: 0 20px 5px; flex-direction: column; gap: 2px; }
+    .footer-contact { order: -1; width: 100%; text-align: center; }
+    .footer-logo { display: none; }
+    .footer-copy { align-self: center; }
   }
 </style>
 </head>
@@ -741,7 +745,6 @@
   <a href="summon.html" class="btn-gold">Summon Us</a>
 </section>
 
-<!-- FOOTER -->
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
   <div class="lightbox-wrap">

@@ -164,21 +164,31 @@
     .page-header { padding: 56px 20px 24px; }
     .page-title { font-size: 56px; }
     .page-punchline { font-size: 24px; }
-    .team { padding: 28px 20px 24px; }
-    .member { padding: 28px 20px 32px; }
+    .team { padding: 19px 20px 24px; }
+    .team > .section-label { display: none; }
+    .member { padding: 10px; }
+    .member-bio { text-align: justify; }
+    .member-job-text { text-align: justify; }
     .member-name { font-size: 32px; }
     .member-headshot { flex: 0 0 100px; width: 100px; }
-    .member-inner { gap: 20px; }
-    .section-title { font-size: 28px; }
-    .reasons { padding: 12px 20px; }
+    .member:first-child .member-headshot { background-position: center calc(50% + 8px) !important; }
+    .member:nth-child(3) .member-headshot { background-position: center calc(50% + 3px) !important; }
+    .member-inner { gap: 5px; }
+    .section-title { font-size: 28px; margin-bottom: 12px !important; }
+    .reasons { padding: 8px 20px; }
+    .reasons > .section-label { display: none; }
     .reasons-grid { grid-template-columns: repeat(2, 1fr); }
-    .reason { border-right: none; padding: 24px 20px; }
-    .verdict { padding: 16px 20px; }
-    .verdict-quote { font-size: 20px; }
+    .reason { border-right: none; padding: 18px 15px; }
+    .reason-body { text-align: justify; line-height: 1.2; }
+    .verdict { padding: 16px 15px; }
+    .verdict-quote { font-size: 16px; }
     .cta-band { padding: 16px 20px; }
-    .footer-logo { height: 70px; }
-    footer { padding: 0 0 80px; }
-    .footer-content { padding: 0 20px 5px; }
+    .cta-text { margin-bottom: 14px; }
+    footer { padding: 0 0 80px; gap: 8px; }
+    .footer-content { padding: 0 20px 5px; flex-direction: column; gap: 2px; }
+    .footer-contact { order: -1; width: 100%; text-align: center; }
+    .footer-logo { display: none; }
+    .footer-copy { align-self: center; }
   }
 </style>
 </head>
@@ -216,10 +226,10 @@
 
     <div class="member">
       <div class="member-inner">
-        <div class="member-headshot" style="background-image: url('images/matt_photo.png'); background-size: cover; background-position: center;"></div>
+        <div class="member-headshot" style="background-image: url('images/matt_photo.png'); background-size: cover; background-position: center;" role="img" aria-label="Matt Ott"></div>
         <div class="member-content">
-          <h2 class="member-name">Matt Ott</h2>
-          <p class="member-meta">Writer &bull; Director &bull; Editor &bull; Producer &nbsp;&#9670;&nbsp; NYC</p>
+          <h3 class="member-name">Matt Ott</h3>
+          <p class="member-meta">Writer &bull; Director &bull; Producer &nbsp;&#9670;&nbsp; NYC</p>
           <p class="member-bio">Award-winning commercial producer and a Nicholl Fellowship quarterfinalist screenwriter who also produces live stand-up in New York. Started Beer Money because he kept watching brands pay agencies to take the funny <em>out</em> of their scripts.</p>
           <div class="member-job">
             <p class="member-job-label">On your spot</p>
@@ -231,10 +241,10 @@
 
     <div class="member">
       <div class="member-inner">
-        <div class="member-headshot" style="background-image: url('images/kiel_photo.png'); background-size: cover; background-position: center;"></div>
+        <div class="member-headshot" style="background-image: url('images/kiel_photo.png'); background-size: cover; background-position: center;" role="img" aria-label="Kiel Kennedy"></div>
         <div class="member-content">
-          <h2 class="member-name">Kiel Kennedy</h2>
-          <p class="member-meta">Actor &bull; Writer &bull; Director &nbsp;&#9670;&nbsp; LA</p>
+          <h3 class="member-name">Kiel Kennedy</h3>
+          <p class="member-meta">Writer &bull; Director &bull; Editor &bull; Actor &nbsp;&#9670;&nbsp; LA</p>
           <p class="member-bio">Came up through The Groundlings, wrote for <em>Robot Chicken</em> on Adult Swim, and co-created <em>The Chit Show</em>, which crossed a million followers in six months. Knows what a joke is supposed to feel like before anyone has rolled a camera.</p>
           <div class="member-job">
             <p class="member-job-label">On your spot</p>
@@ -246,9 +256,9 @@
 
     <div class="member">
       <div class="member-inner">
-        <div class="member-headshot" style="background-image: url('images/gerry_photo.png'); background-size: cover; background-position: center;"></div>
+        <div class="member-headshot" style="background-image: url('images/gerry_photo.png'); background-size: cover; background-position: center;" role="img" aria-label="Gerry Keane"></div>
         <div class="member-content">
-          <h2 class="member-name">Gerry Keane</h2>
+          <h3 class="member-name">Gerry Keane</h3>
           <p class="member-meta">Account &amp; Creative Agency Leader &bull; Fun Police &nbsp;&#9670;&nbsp; NYC</p>
           <p class="member-bio">Sixteen years putting brands at the forefront of culture through what the industry calls earned creative comms. (He&rsquo;s folksier than that sentence makes him sound.) Account and creative leadership across global ad and PR shops on Busch Light, Natural Light, Goose Island, The New York Times, The Athletic, AXE, Oakley, Red Bull, MillerCoors, Jim Beam, BODYARMOR, Mattel, and USPS. Every comedy troupe needs the grounded one. Gerry&rsquo;s it, slightly askew.</p>
           <div class="member-job">

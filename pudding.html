@@ -268,11 +268,12 @@
     .page-title-aside { padding-left: 3px; }
     .page-sub { font-size: 12px; }
     .capabilities { padding: 14px 20px; }
-    .capabilities-list li { font-size: 11px; letter-spacing: 2px; }
+    .capabilities-list li { font-size: 11px; letter-spacing: 2px; padding: 2px 0; }
     .capabilities-list li:not(:last-child)::after { margin: 0 10px; }
     .work { padding: 24px 20px; }
     .work-grid { grid-template-columns: 1fr; }
     .work-item-client { font-size: 22px; }
+    .work-item-desc { font-size: 20px; }
     .stat-band { padding: 16px 20px; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .stat { border-right: 1px solid rgba(245,240,232,0.1); padding: 24px 16px; }
@@ -280,10 +281,14 @@
     .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid rgba(245,240,232,0.1); }
     .placeholder-note { margin: 0 20px 20px; }
     .cta-band { padding: 24px 20px; }
+    .cta-text { margin-bottom: 14px; }
     .btn-gold { font-size: 16px; }
     .footer-logo { height: 70px; }
-    footer { padding: 0 0 80px; }
-    .footer-content { padding: 0 20px 5px; }
+    footer { padding: 0 0 80px; gap: 8px; }
+    .footer-content { padding: 0 20px 5px; flex-direction: column; gap: 2px; }
+    .footer-contact { order: -1; width: 100%; text-align: center; }
+    .footer-logo { display: none; }
+    .footer-copy { align-self: center; }
   }
 </style>
 </head>
@@ -328,7 +333,7 @@
 <section class="work">
   <div class="work-grid">
 
-    <div class="work-item" data-videos='[{"label":"The Chit Show","url":"https://www.youtube.com/embed/HMCnnLJ2Xgg"}]'>
+    <div class="work-item" data-videos='[{"label":"The Chit Show","url":"https://www.youtube.com/embed/HMCnnLJ2Xgg"}]' tabindex="0" role="button" aria-label="Watch The Chit Show">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -339,7 +344,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"The Busch Guy\u2019d","url":"https://player.vimeo.com/video/757310145"}]'>
+    <div class="work-item" data-videos='[{"label":"The Busch Guy\u2019d","url":"https://player.vimeo.com/video/757310145"}]' tabindex="0" role="button" aria-label="Watch Busch Light">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -350,7 +355,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Full","url":"https://player.vimeo.com/video/705548487"},{"label":"30s","url":"https://player.vimeo.com/video/710831218?h=5133750744"},{"label":"15s","url":"https://player.vimeo.com/video/710831531?h=fcb167c032"}]'>
+    <div class="work-item" data-videos='[{"label":"Full","url":"https://player.vimeo.com/video/705548487"},{"label":"30s","url":"https://player.vimeo.com/video/710831218?h=5133750744"},{"label":"15s","url":"https://player.vimeo.com/video/710831531?h=fcb167c032"}]' tabindex="0" role="button" aria-label="Watch BarkBox">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -361,7 +366,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Bubba Joins the Dark Side","url":"https://player.vimeo.com/video/1035312139?h=f08ea8a8c1"}]'>
+    <div class="work-item" data-videos='[{"label":"Bubba Joins the Dark Side","url":"https://player.vimeo.com/video/1035312139?h=f08ea8a8c1"}]' tabindex="0" role="button" aria-label="Watch Star Wars">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -372,7 +377,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Smoothie","url":"https://player.vimeo.com/video/1035309757?h=0719e0256b"},{"label":"Stretching","url":"https://player.vimeo.com/video/1035309907?h=55bc3b0f7d"},{"label":"Skincare","url":"https://player.vimeo.com/video/1035309631?h=1de10a6d5d"}]'>
+    <div class="work-item" data-videos='[{"label":"Smoothie","url":"https://player.vimeo.com/video/1035309757?h=0719e0256b"},{"label":"Stretching","url":"https://player.vimeo.com/video/1035309907?h=55bc3b0f7d"},{"label":"Skincare","url":"https://player.vimeo.com/video/1035309631?h=1de10a6d5d"}]' tabindex="0" role="button" aria-label="Watch Diablo 4">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -383,7 +388,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Comedy Central","url":"https://www.youtube.com/embed/TF0jQY2igPk"}]'>
+    <div class="work-item" data-videos='[{"label":"Comedy Central","url":"https://www.youtube.com/embed/TF0jQY2igPk"}]' tabindex="0" role="button" aria-label="Watch Comedy Central">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -394,7 +399,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Gluten 15s","url":"https://player.vimeo.com/video/440801907"},{"label":"Carbs 15s","url":"https://player.vimeo.com/video/442740806"},{"label":"Sugar 15s","url":"https://player.vimeo.com/video/442740805"}]'>
+    <div class="work-item" data-videos='[{"label":"Gluten 15s","url":"https://player.vimeo.com/video/440801907"},{"label":"Carbs 15s","url":"https://player.vimeo.com/video/442740806"},{"label":"Sugar 15s","url":"https://player.vimeo.com/video/442740805"}]' tabindex="0" role="button" aria-label="Watch Magic Spoon">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -405,7 +410,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Body Double","url":"https://player.vimeo.com/video/1005685556?h=ea2ae0ee9a"},{"label":"Yoga","url":"https://player.vimeo.com/video/1073688146?h=7464ff44a3"},{"label":"Fitness","url":"https://player.vimeo.com/video/1073688023?h=e19bf07683"},{"label":"Girl\u2019s Night","url":"https://player.vimeo.com/video/1073687940?h=c232a9ac49"},{"label":"Bedtime","url":"https://player.vimeo.com/video/1073687720?h=c95f9b1542"},{"label":"Morning","url":"https://player.vimeo.com/video/1073687805?h=5d1ef052b1"},{"label":"Bath","url":"https://player.vimeo.com/video/1073687889?h=04885f3daf"},{"label":"Launch Promo","url":"https://player.vimeo.com/video/1073688254?h=a3c7261e45"}]'>
+    <div class="work-item" data-videos='[{"label":"Body Double","url":"https://player.vimeo.com/video/1005685556?h=ea2ae0ee9a"},{"label":"Yoga","url":"https://player.vimeo.com/video/1073688146?h=7464ff44a3"},{"label":"Fitness","url":"https://player.vimeo.com/video/1073688023?h=e19bf07683"},{"label":"Girl\u2019s Night","url":"https://player.vimeo.com/video/1073687940?h=c232a9ac49"},{"label":"Bedtime","url":"https://player.vimeo.com/video/1073687720?h=c95f9b1542"},{"label":"Morning","url":"https://player.vimeo.com/video/1073687805?h=5d1ef052b1"},{"label":"Bath","url":"https://player.vimeo.com/video/1073687889?h=04885f3daf"},{"label":"Launch Promo","url":"https://player.vimeo.com/video/1073688254?h=a3c7261e45"}]' tabindex="0" role="button" aria-label="Watch Lyre's Non-Alcoholic">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -416,7 +421,7 @@
       <div class="work-item-overlay"><p class="work-item-overlay-text">Watch</p></div>
     </div>
 
-    <div class="work-item" data-videos='[{"label":"Wear a Mask. Properly.","url":"https://player.vimeo.com/video/418322761"}]'>
+    <div class="work-item" data-videos='[{"label":"Wear a Mask. Properly.","url":"https://player.vimeo.com/video/418322761"}]' tabindex="0" role="button" aria-label="Watch New York State">
       <div class="work-item-bg"></div>
       <div class="work-item-pattern"></div>
       <div class="work-item-content">
@@ -430,7 +435,7 @@
   </div>
 </section>
 
-<div class="stat-band">
+<section class="stat-band">
   <div class="stat-grid">
     <div class="stat">
       <p class="stat-num">9+</p>
@@ -449,7 +454,7 @@
       <p class="stat-label">Unfunny Campaigns</p>
     </div>
   </div>
-</div>
+</section>
 
 <section class="cta-band">
   <p class="cta-text">Seen enough pudding? <strong>Let&rsquo;s make yours.</strong></p>
